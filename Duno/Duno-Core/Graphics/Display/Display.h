@@ -1,5 +1,8 @@
 #pragma once
-#include "GLFW_Wrap\GLFW_Wrap.h"
+#include <stdio.h>      /* printf */
+#include <stdlib.h>
+#include <GLFW\glfw3.h>
+#pragma comment(lib, "opengl32.lib")
 
 
 namespace Duno {namespace Graphics {
@@ -14,8 +17,6 @@ namespace Duno {namespace Graphics {
 			const char* m_title;
 			int m_width;
 			int m_height;
-			int m_posX;
-			int m_posY;
 			int m_fps;
 			bool m_useVsync;	
 

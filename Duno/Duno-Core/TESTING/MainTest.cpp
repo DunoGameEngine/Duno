@@ -6,6 +6,14 @@ int main() {
 	using namespace Graphics;
 
 	Display newDisplay;
+	newDisplay.createDisplay("swag");
+
+	while (newDisplay.running) {
+
+		newDisplay.updateDisplay();
+
+	}
+	newDisplay.closeDisplay();
 
 	return 0;
 }

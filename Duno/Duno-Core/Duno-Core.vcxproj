@@ -111,12 +111,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\Display\Display.h" />
-    <ClInclude Include="Graphics\Display\GLFW_Wrap\GLFW_Wrap.h" />
     <ClInclude Include="OpenGL\GL11\GL11.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics\Display\Display.cpp" />
-    <ClCompile Include="Graphics\Display\GLFW_Wrap\GLFW_Wrap.cpp" />
     <ClCompile Include="TESTING\MainTest.cpp" />
   </ItemGroup>
   <ItemGroup>
