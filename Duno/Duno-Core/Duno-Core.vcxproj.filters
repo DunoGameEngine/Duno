@@ -18,5 +18,8 @@
     <ClInclude Include="Display\Display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Third-Party\GLFW\GLFW.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
