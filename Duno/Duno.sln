@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Duno-Core", "Duno-Core\Duno-Core.vcxproj", "{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestGame", "TestGame\TestGame.vcxproj", "{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,14 +21,6 @@ Global
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Release|x64.Build.0 = Release|x64
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Release|x86.ActiveCfg = Release|Win32
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Release|x86.Build.0 = Release|Win32
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Debug|x64.ActiveCfg = Debug|x64
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Debug|x64.Build.0 = Debug|x64
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Debug|x86.ActiveCfg = Debug|Win32
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Debug|x86.Build.0 = Debug|Win32
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Release|x64.ActiveCfg = Release|x64
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Release|x64.Build.0 = Release|x64
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Release|x86.ActiveCfg = Release|Win32
-		{2DFD8E6E-8B90-40A4-BA23-4C39AF09A87C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

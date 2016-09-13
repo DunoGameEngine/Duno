@@ -35,5 +35,8 @@
     <ClCompile Include="Graphics\Display\GLFW_Wrap\GLFW_Wrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TESTING\MainTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

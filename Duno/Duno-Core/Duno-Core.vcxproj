@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="Graphics\Display\Display.cpp" />
     <ClCompile Include="Graphics\Display\GLFW_Wrap\GLFW_Wrap.cpp" />
+    <ClCompile Include="TESTING\MainTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

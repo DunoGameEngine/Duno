@@ -2,6 +2,6 @@
 
 namespace third_party{namespace GLFW{
 
-	class GLFW_Wrap:
+	class GLFW_Wrap;
 
 } }
