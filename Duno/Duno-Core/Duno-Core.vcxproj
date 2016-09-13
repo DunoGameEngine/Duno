@@ -111,14 +111,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\Display\Display.h" />
+    <ClInclude Include="Graphics\Display\GLFW\GLFW.h" />
     <ClInclude Include="OpenGL\GL11\GL11.h" />
-    <ClInclude Include="third_party\GLFW\GLFW.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics\Display\Display.cpp" />
-    <ClCompile Include="third_party\GLFW\GLFW.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

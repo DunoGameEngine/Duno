@@ -1,7 +1,5 @@
 #pragma once
 
-using namespace Duno;
-
 namespace Duno {namespace Graphics {
 
 		class Display {
