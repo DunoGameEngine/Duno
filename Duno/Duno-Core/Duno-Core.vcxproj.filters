@@ -21,16 +21,18 @@
     <ClInclude Include="Graphics\Display\Display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\Display\GLFW\GLFW.h">
+    <ClInclude Include="Graphics\Display\GLFW_Wrap\GLFW_Wrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics\Display\Display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Display\GLFW_Wrap\GLFW_Wrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -15,14 +15,8 @@ Duno::Graphics::Display::~Display()
 {
 }
 
-void Duno::Graphics::Display::createDisplay(char * title, int width, int height,
-	int fps, bool useVsync)
+void Duno::Graphics::Display::createDisplay(char * title, int width, int height, int fps, bool useVsync)
 {
-	m_title = title;
-	m_width = width;
-	m_height = height;
-	m_fps = fps;
-	m_useVsync = useVsync;
 }
 
 void Duno::Graphics::Display::updateDisplay()
