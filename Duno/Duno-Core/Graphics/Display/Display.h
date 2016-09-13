@@ -1,4 +1,7 @@
 #pragma once
+
+using namespace Duno;
+
 namespace Duno {namespace Graphics {
 
 		class Display {
@@ -23,8 +26,8 @@ namespace Duno {namespace Graphics {
 			Display();
 			~Display();
 
-			void createDisplay(char* title = "Nein_Engine", int width = 720, int height = 640,
-				int posX = -1, int posY = -1, int fps = 60, bool useVsync = false);
+			void createDisplay(char* title = "Duno_Engine", int width = 720, int height = 640,
+				int fps = 60, bool useVsync = false);
 			void updateDisplay();
 			void closeDisplay();
 

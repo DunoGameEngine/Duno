@@ -110,12 +110,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Display\Display.h" />
+    <ClInclude Include="Graphics\Display\Display.h" />
     <ClInclude Include="OpenGL\GL11\GL11.h" />
-    <ClInclude Include="Third-Party\GLFW\GLFW.h" />
+    <ClInclude Include="third_party\GLFW\GLFW.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Display\Display.cpp" />
+    <ClCompile Include="Graphics\Display\Display.cpp" />
+    <ClCompile Include="third_party\GLFW\GLFW.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
