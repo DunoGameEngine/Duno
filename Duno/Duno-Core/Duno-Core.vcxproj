@@ -130,11 +130,14 @@
     <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
     <ClInclude Include="Graphics\renderEngine\Loader.h" />
+    <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />
+    <ClCompile Include="Graphics\renderEngine\Loader.cpp" />
+    <ClCompile Include="Graphics\renderEngine\Types\PlainModel.cpp" />
     <ClCompile Include="TESTING\MainTest.cpp" />
   </ItemGroup>
   <ItemGroup>

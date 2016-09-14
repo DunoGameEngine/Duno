@@ -18,6 +18,11 @@ namespace Duno{namespace Graphics{namespace RenderEngine{
 
 	public:
 
+		//constructor and destructor of the class constructor
+		Loader();
+		~Loader();
+
+		void load();
 
 
 	};
