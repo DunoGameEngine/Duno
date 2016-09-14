@@ -129,7 +129,6 @@
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
-    <ClInclude Include="OpenGL\GL11\GL11.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameUtil\GameTimer.cpp" />
@@ -144,6 +143,8 @@
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\glfw.redist.3.2\build\native\glfw.redist.targets" Condition="Exists('..\packages\glfw.redist.3.2\build\native\glfw.redist.targets')" />
     <Import Project="..\packages\glfw.3.2\build\native\glfw.targets" Condition="Exists('..\packages\glfw.3.2\build\native\glfw.targets')" />
+    <Import Project="..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets" Condition="Exists('..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets')" />
+    <Import Project="..\packages\glew.1.9.0.1\build\native\glew.targets" Condition="Exists('..\packages\glew.1.9.0.1\build\native\glew.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -151,5 +152,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\glfw.redist.3.2\build\native\glfw.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.redist.3.2\build\native\glfw.redist.targets'))" />
     <Error Condition="!Exists('..\packages\glfw.3.2\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.3.2\build\native\glfw.targets'))" />
+    <Error Condition="!Exists('..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\glew.1.9.0.1\build\native\glew.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glew.1.9.0.1\build\native\glew.targets'))" />
   </Target>
 </Project>
