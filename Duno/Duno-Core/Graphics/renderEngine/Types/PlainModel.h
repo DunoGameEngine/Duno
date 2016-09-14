@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Duno{namespace Graphics{ namespace RenderEngine{
+namespace Duno{namespace Graphics{ namespace RenderEngine{ namespace Types{
 
 	class PlainModel {
 
@@ -34,4 +34,4 @@ namespace Duno{namespace Graphics{ namespace RenderEngine{
 
 	};
 
-} } }
+}}}}
