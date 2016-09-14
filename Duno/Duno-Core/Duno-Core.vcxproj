@@ -129,6 +129,7 @@
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
+    <ClInclude Include="Graphics\renderEngine\Loader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameUtil\GameTimer.cpp" />
