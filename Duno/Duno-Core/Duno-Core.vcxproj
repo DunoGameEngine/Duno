@@ -110,10 +110,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GameUtil\GameTimer.h" />
+    <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
     <ClInclude Include="OpenGL\GL11\GL11.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameUtil\GameTimer.cpp" />
+    <ClCompile Include="GameUtil\Logger.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />
     <ClCompile Include="TESTING\MainTest.cpp" />
   </ItemGroup>
