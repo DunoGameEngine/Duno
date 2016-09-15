@@ -1,3 +1,1 @@
-# Duno
-
-![alt tag](DunoLogo.png)
+![alt tag](Duno_Page.png)
