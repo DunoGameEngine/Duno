@@ -9,7 +9,7 @@ long GameTimer::currentTimeInMills()
 }
 
 /* subtracts the time the current time with the time the last frame started and 
-devides it by 1000 to convert it into seconds */
+divides it by 1000 to convert it into seconds */
 void GameTimer::update()
 {
 	long currentFrameTime = GameTimer::currentTimeInMills();
