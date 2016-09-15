@@ -126,7 +126,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameUtil\Debug.h" />
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
@@ -134,7 +133,6 @@
     <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameUtil\Debug.cpp" />
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />
