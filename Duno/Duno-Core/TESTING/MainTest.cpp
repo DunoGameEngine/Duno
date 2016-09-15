@@ -1,6 +1,5 @@
 #include "../Graphics/Display/Display.h"
 #include "../GameUtil/Logger.h"
-#include "../GameUtil/Debug.h"
 
 int main() {
 
