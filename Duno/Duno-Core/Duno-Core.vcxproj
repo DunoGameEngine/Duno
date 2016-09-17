@@ -132,6 +132,7 @@
     <ClInclude Include="Graphics\Display\Display.h" />
     <ClInclude Include="Graphics\renderEngine\Loader.h" />
     <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h" />
+    <ClInclude Include="OpenGL\GL.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameUtil\GameTimer.cpp" />

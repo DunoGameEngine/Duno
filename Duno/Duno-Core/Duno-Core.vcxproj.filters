@@ -30,7 +30,10 @@
     <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Assets\AssetManeger.h">
+    <ClInclude Include="GameUtil\Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\GL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\Types\PlainModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtil\Debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
