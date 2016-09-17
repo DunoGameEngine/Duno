@@ -127,6 +127,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Assets\AssetManeger.h" />
+    <ClInclude Include="Assets\FileLoader\OBJFile.h" />
+    <ClInclude Include="Assets\FileSystem.h" />
+    <ClInclude Include="GameUtil\Exceptions.h" />
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
@@ -135,6 +138,9 @@
     <ClInclude Include="OpenGL\GL.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Assets\FileLoader\OBJFile.cpp" />
+    <ClCompile Include="Assets\FileSystem.cpp" />
+    <ClCompile Include="GameUtil\Exceptions.cpp" />
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />

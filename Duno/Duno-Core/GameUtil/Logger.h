@@ -29,8 +29,8 @@ public:
 	template<typename T> static void log(T t);
 	/* Logs then goes to a new line */
 	template<typename T> static void logln(T t);
-private:
 	static string getSpace();
+private:
 	/* Stack of spaces */
 	static vector<string> spaceStack;
 	static long lastTime;

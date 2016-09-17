@@ -2,33 +2,46 @@
 #include "../GameUtil/Logger.h"
 #include "../Assets/AssetManeger.h"
 #include "../Graphics/renderEngine/Types/PlainModel.h"
+#include "../Assets/FileLoader/OBJFile.h"
+using namespace Duno;
+using namespace Graphics;
 
-int main() {
-	
+void game(Display& newDisplay)
+{
 	Logger::init();
 	Logger::setSpace("GameLoader");
-	
-	Logger::logln("Loading Assets");
-	AssetManeger<Duno::Graphics::RenderEngine::Types::PlainModel> modelManeger;
-	modelManeger.loadAsset(new Duno::Graphics::RenderEngine::Types::PlainModel(0, 0, 0, false));
+	FileSystem::setHome("../Assets/");
 
-	using namespace Duno;
-	using namespace Graphics;
+	Logger::logln("Loading Assets");
+	AssetManeger<OBJFile> modelManeger;
+	modelManeger.loadAsset(OBJFile() << FileSystem::getFile("test.obj"));
 
 	Logger::logln("Loading Display");
-	Display newDisplay;
 	newDisplay.createDisplay("swag");
 
 	Logger::logln("Starting Main Game Loop");
 	Logger::setSpace("GameLoop");
 	while (newDisplay.running) {
-
 		newDisplay.updateDisplay();
-
 	}
 	Logger::back();
 	Logger::logln("Game Closing");
-	newDisplay.closeDisplay();
+}
 
+#if defined(_WIN32)
+#include <Windows.h>
+#include "../GameUtil/Exceptions.h"
+#endif
+int main() {
+	Display newDisplay;
+#if defined(_WIN32)
+	try { game(newDisplay); }
+	catch (DunoException* e) { MessageBoxA(0, e->errorOut().c_str(), "Duno Error", ALERT_SYSTEM_ERROR); }
+	catch (...) { MessageBoxA(0, "Unkown error occured", "Duno Error", ALERT_SYSTEM_ERROR); }
+#else
+	game();
+#endif
+
+	newDisplay.closeDisplay();
 	return 0;
 }

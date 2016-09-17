@@ -10,7 +10,7 @@ public:
 	/* Adds an asset to the vector */
 	void loadAsset(Asset* asset) { assets.push_back(asset); }
 	/* Delets the asset */
-	~AssetManeger() { for (Asset* asset : assets) delete asset; }
+	~AssetManeger() {}
 private:
 	/* Vector of asset pointers */
 	vector<Asset*> assets;
