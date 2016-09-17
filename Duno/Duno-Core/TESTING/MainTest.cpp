@@ -14,7 +14,7 @@ void game(Display& newDisplay)
 
 	Logger::logln("Loading Assets");
 	AssetManeger<OBJFile> modelManeger;
-	modelManeger.loadAsset(OBJFile() << FileSystem::getFile("test.obj"));
+	modelManeger.loadAsset(OBJFile::load(FileSystem::getFile("models/test.obj")));
 
 	Logger::logln("Loading Display");
 	newDisplay.createDisplay("swag");

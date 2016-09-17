@@ -35,14 +35,21 @@ struct Virtex
 	Virtex* dup;
 };
 /* Convert File to OBJFile (only temp) */
-OBJFile* OBJFile::operator<<(File& file)
+OBJFile* OBJFile::load(File& file)
 {
+	OBJFile* outFile = new OBJFile();
+	
 	Logger::setSpace("OBJLoader");
 	// Some vectors of data
 	vector<Virtex*> vertices;
 	vector<glm::vec2> textures;
 	vector<glm::vec3> normals;
 	vector<unsigned int> indices;
+
+	float* positionArray = new float[0];
+	float* textureArray = new float[0];
+	float* normalArray = new float[0];
+	unsigned int* indicesArray = new unsigned int[0];
 
 	ifstream f(file.getURL());
 	string line;
@@ -71,68 +78,56 @@ OBJFile* OBJFile::operator<<(File& file)
 			for (unsigned int i = 0; i < 3; i++)
 			{
 				int v, t, n; iss >> v >> t >> n;
-				Virtex* virtex = vertices.at(v - 1);
-				if (!virtex->isSet())
-				{
-					virtex->textureIndex = t - 1;
-					virtex->normalIndex = n - 1;
-					indices.push_back(v - 1);
-				}
-				else
-				{
-					/* Deal with duplecate vertices */
-					bool done = false;
-					while (!done)
-					{
-						done = true;
-						if (virtex->textureIndex == t - 1 && virtex->normalIndex == n - 1)
-							indices.push_back(virtex->index);
-						Virtex* dup = virtex->dup;
-						if (dup != NULL)
-							done = false; virtex = dup; continue;
-						Virtex* duplicateVertex = new Virtex((unsigned int)vertices.size(), virtex->position);
-						duplicateVertex->textureIndex = t - 1;
-						duplicateVertex->normalIndex = n - 1;
-						virtex->dup = duplicateVertex;
-						vertices.push_back(duplicateVertex);
-						indices.push_back(virtex->index);
-					}
-					cout << "====================" << endl;
-				}
+				cout << v << ", " << t << ", " << n << endl;
+				Virtex* virtex = vertices[v - 1];
+				virtex->textureIndex = t - 1;
+				virtex->normalIndex = n - 1;
+				indices.push_back(v - 1);
 			}
 		}
 		else
 		{
-			throw new WrongFileTypeExcption("OBJFile");
+			if (!(type == "s" || type == "o" || type == "#"))
+				throw new WrongFileTypeExcption("OBJFile");
 		}
 	}
 
 	/* Convert data to arrays */
-	postionSize_ = (unsigned int)vertices.size() * 3;
-	textureSize_ = (unsigned int)vertices.size() * 2;
-	normalSize_  = (unsigned int)vertices.size() * 3;
-	positionArray_ = new float[postionSize_];
-	textureArray_  = new float[textureSize_];
-	normalArray_   = new float[normalSize_];
+	unsigned int postionSize = (unsigned int)vertices.size() * 3;
+	unsigned int textureSize = (unsigned int)vertices.size() * 2;
+	unsigned int normalSize  = (unsigned int)vertices.size() * 3;
+	positionArray = new float[postionSize];
+	textureArray  = new float[textureSize];
+	normalArray   = new float[normalSize];
 	for (unsigned int i = 0; i < vertices.size(); i++)
 	{
 		Virtex* virtex = vertices[i];
 		glm::vec3 position = virtex->position;
 		glm::vec2 texture = textures.at(virtex->textureIndex);
 		glm::vec3 normal = normals.at(virtex->normalIndex);
-		positionArray_[i * 3] = position.x;
-		positionArray_[(i * 3) + 1] = position.y;
-		positionArray_[(i * 3) + 2] = position.z;
-		textureArray_[i * 2] = texture.x;
-		textureArray_[(i * 2) + 1] = texture.y;
-		normalArray_[i * 3] = normal.x;
-		normalArray_[(i * 3) + 1] = normal.y;
-		normalArray_[(i * 3) + 2] = normal.z;
+		positionArray[i * 3] = position.x;
+		positionArray[(i * 3) + 1] = position.y;
+		positionArray[(i * 3) + 2] = position.z;
+		textureArray[i * 2] = texture.x;
+		textureArray[(i * 2) + 1] = texture.y;
+		normalArray[i * 3] = normal.x;
+		normalArray[(i * 3) + 1] = normal.y;
+		normalArray[(i * 3) + 2] = normal.z;
 	}
-	indecesSize_ = (unsigned int)indices.size();
-	indicesArray_ = &indices[0];
+	unsigned int indecesSize = (unsigned int)indices.size();
+	indicesArray = &indices[0];
 	for (Virtex* virtex : vertices) delete virtex;
+	
+	outFile->postionSize_ = postionSize;
+	outFile->textureArray_ = textureArray;
+	outFile->normalSize_ = normalSize;
+	outFile->indecesSize_ = indecesSize;
+
+	outFile->postionSize_ = postionSize;
+	outFile->textureSize_ = textureSize;
+	outFile->normalSize_ = normalSize;
+	outFile->indicesArray_ = indicesArray;
 	Logger::logln(("Loaded OBJFile " + file.getURL()).c_str());
 	Logger::back();
-	return this;
+	return outFile;
 }
