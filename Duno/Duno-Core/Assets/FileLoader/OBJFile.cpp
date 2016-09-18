@@ -36,9 +36,7 @@ struct Virtex
 };
 /* Convert File to OBJFile (only temp) */
 OBJFile* OBJFile::load(File& file)
-{
-	OBJFile* outFile = new OBJFile();
-	
+{	
 	Logger::setSpace("OBJLoader");
 	// Some vectors of data
 	vector<Virtex*> vertices;
@@ -46,12 +44,8 @@ OBJFile* OBJFile::load(File& file)
 	vector<glm::vec3> normals;
 	vector<unsigned int> indices;
 
-	float* positionArray = new float[0];
-	float* textureArray = new float[0];
-	float* normalArray = new float[0];
-	unsigned int* indicesArray = new unsigned int[0];
-
 	ifstream f(file.getURL());
+	if (!f.good()) throw new FileNotFoundException(file.getURL());
 	string line;
 	// Load data (positions, textures, normals)
 	while (getline(f, line))
@@ -78,7 +72,6 @@ OBJFile* OBJFile::load(File& file)
 			for (unsigned int i = 0; i < 3; i++)
 			{
 				int v, t, n; iss >> v >> t >> n;
-				cout << v << ", " << t << ", " << n << endl;
 				Virtex* virtex = vertices[v - 1];
 				virtex->textureIndex = t - 1;
 				virtex->normalIndex = n - 1;
@@ -96,9 +89,9 @@ OBJFile* OBJFile::load(File& file)
 	unsigned int postionSize = (unsigned int)vertices.size() * 3;
 	unsigned int textureSize = (unsigned int)vertices.size() * 2;
 	unsigned int normalSize  = (unsigned int)vertices.size() * 3;
-	positionArray = new float[postionSize];
-	textureArray  = new float[textureSize];
-	normalArray   = new float[normalSize];
+	float* positionArray = new float[postionSize];
+	float* textureArray  = new float[textureSize];
+	float* normalArray   = new float[normalSize];
 	for (unsigned int i = 0; i < vertices.size(); i++)
 	{
 		Virtex* virtex = vertices[i];
@@ -115,9 +108,10 @@ OBJFile* OBJFile::load(File& file)
 		normalArray[(i * 3) + 2] = normal.z;
 	}
 	unsigned int indecesSize = (unsigned int)indices.size();
-	indicesArray = &indices[0];
+	unsigned int* indicesArray = &indices[0];
 	for (Virtex* virtex : vertices) delete virtex;
 	
+	OBJFile* outFile = new OBJFile();
 	outFile->postionSize_ = postionSize;
 	outFile->textureArray_ = textureArray;
 	outFile->normalSize_ = normalSize;

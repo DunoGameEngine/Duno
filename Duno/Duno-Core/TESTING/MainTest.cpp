@@ -3,6 +3,8 @@
 #include "../Assets/AssetManeger.h"
 #include "../Graphics/renderEngine/Types/PlainModel.h"
 #include "../Assets/FileLoader/OBJFile.h"
+#include "../GameUtil/Exceptions.h"
+#include <Windows.h>
 using namespace Duno;
 using namespace Graphics;
 
@@ -28,19 +30,11 @@ void game(Display& newDisplay)
 	Logger::logln("Game Closing");
 }
 
-#if defined(_WIN32)
-#include <Windows.h>
-#include "../GameUtil/Exceptions.h"
-#endif
 int main() {
 	Display newDisplay;
-#if defined(_WIN32)
 	try { game(newDisplay); }
 	catch (DunoException* e) { MessageBoxA(0, e->errorOut().c_str(), "Duno Error", ALERT_SYSTEM_ERROR); }
 	catch (...) { MessageBoxA(0, "Unkown error occured", "Duno Error", ALERT_SYSTEM_ERROR); }
-#else
-	game();
-#endif
 
 	newDisplay.closeDisplay();
 	return 0;
