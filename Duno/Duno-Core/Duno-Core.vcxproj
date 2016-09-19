@@ -129,6 +129,7 @@
     <ClInclude Include="Assets\AssetManeger.h" />
     <ClInclude Include="Assets\FileLoader\OBJFile.h" />
     <ClInclude Include="Assets\FileSystem.h" />
+    <ClInclude Include="Duno.h" />
     <ClInclude Include="GameUtil\Exceptions.h" />
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
