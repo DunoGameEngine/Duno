@@ -133,7 +133,7 @@
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
-    <ClInclude Include="Graphics\renderEngine\Loader.h" />
+    <ClInclude Include="Graphics\renderEngine\GLLoader.h" />
     <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h" />
     <ClInclude Include="OpenGL\GL.h" />
   </ItemGroup>
@@ -144,7 +144,7 @@
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />
-    <ClCompile Include="Graphics\renderEngine\Loader.cpp" />
+    <ClCompile Include="Graphics\renderEngine\GLLoader.cpp" />
     <ClCompile Include="Graphics\renderEngine\Types\PlainModel.cpp" />
     <ClCompile Include="TESTING\MainTest.cpp" />
   </ItemGroup>

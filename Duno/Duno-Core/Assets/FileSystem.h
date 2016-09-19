@@ -2,24 +2,27 @@
 #include <string>
 using namespace std;
 
-/* Represents an unkown file type */
-class File
+namespace FileType
 {
-public:
-	/* Sets the url of the file by defalt */
-	File(string url) : url_(url) {}
-	/* Loads the data of the file to a string */
-	void loadFileData();
+	/* Represents an unkown file type */
+	class File
+	{
+	public:
+		/* Sets the url of the file by defalt */
+		File(string url) : url_(url) {}
+		/* Loads the data of the file to a string */
+		void loadFileData();
 
-	/* Getters */
-	string getURL() { return url_; }
-	string getData() { return data_; };
-private:
-	/* URL of the file */
-	string url_;
-	/* Stores the contents of the file */
-	string data_;
-};
+		/* Getters */
+		string getURL() { return url_; }
+		string getData() { return data_; };
+	private:
+		/* URL of the file */
+		string url_;
+		/* Stores the contents of the file */
+		string data_;
+	};
+}
 
 /* Manegers the asset file system */
 class FileSystem

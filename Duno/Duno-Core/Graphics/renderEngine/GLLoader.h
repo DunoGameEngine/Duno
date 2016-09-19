@@ -6,7 +6,7 @@
 #include "../OpenGL/GL.h"
 namespace Duno{namespace Graphics{namespace RenderEngine{
 
-	class Loader {
+	class GLLoader {
 
 	private:
 
@@ -23,21 +23,21 @@ namespace Duno{namespace Graphics{namespace RenderEngine{
 		void unbindVAO();
 
 		//VBO management + store in VAO
-		GLuint storeDataInVBO(int dataSize, float data[]);
+		GLuint storeDataInVBO(int dataSize, float* data);
 
 		//bind Indices and include them ni the VAO
-		void bindIndicesBuffer(int indices[]);
+		void bindIndicesBuffer(unsigned int* indices);
 
 		//Delete all the VBOs and VAOs
 		void cleanUp();
 	public:
 
 		//constructor and destructor of the class constructor
-		Loader();
-		~Loader();
+		GLLoader();
+		~GLLoader();
 
 		//load data into the model, return new model
-		Types::PlainModel load(float data[], int indices[]);
+		Types::PlainModel load(float* data, unsigned int* indices);
 
 
 

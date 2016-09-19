@@ -1,17 +1,17 @@
-#include "Loader.h"
+#include "GLLoader.h"
 
-Duno::Graphics::RenderEngine::Loader::Loader()
+Duno::Graphics::RenderEngine::GLLoader::GLLoader()
 {
 	vaoLength = 0;
 }
 
-Duno::Graphics::RenderEngine::Loader::~Loader()
+Duno::Graphics::RenderEngine::GLLoader::~GLLoader()
 {
 	cleanUp();
 }
 
 Duno::Graphics::RenderEngine::Types::PlainModel
-Duno::Graphics::RenderEngine::Loader::load(float data[], int indices[])
+Duno::Graphics::RenderEngine::GLLoader::load(float* data, unsigned int* indices)
 {
 	//create new VAO
 	int VAO = createVAO();
@@ -30,7 +30,7 @@ Duno::Graphics::RenderEngine::Loader::load(float data[], int indices[])
 }
 
 
-int Duno::Graphics::RenderEngine::Loader::createVAO()
+int Duno::Graphics::RenderEngine::GLLoader::createVAO()
 {
 	GLuint vaoID;
 
@@ -46,13 +46,13 @@ int Duno::Graphics::RenderEngine::Loader::createVAO()
 	return vaoID;
 }
 
-void Duno::Graphics::RenderEngine::Loader::unbindVAO()
+void Duno::Graphics::RenderEngine::GLLoader::unbindVAO()
 {
 	glBindVertexArray(0);
 }
 
 
-GLuint Duno::Graphics::RenderEngine::Loader::storeDataInVBO(int dataSize, float data[])
+GLuint Duno::Graphics::RenderEngine::GLLoader::storeDataInVBO(int dataSize, float* data)
 {
 	//create new gl int variable
 	GLuint vboID;
@@ -65,21 +65,21 @@ GLuint Duno::Graphics::RenderEngine::Loader::storeDataInVBO(int dataSize, float 
 	vbos.push_back(vboID);
 
 	//bind the vbo
-	glBindBuffer(GL_ARRAY_BUFFER,vboID);
-	glVertexAttribPointer(vaoLength, dataSize, GL_FLOAT, false, 0, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, vboID);
+	glVertexAttribPointer(vaoLength, dataSize, GL_FLOAT, false, 0, data);
 
 	//increase the number of vbos in the vao
 	vaoLength++;
 
 	//unbind the vbo
-	glBindBuffer(GL_ARRAY_BUFFER,0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	return vboID;
 
 }
 
 
-void Duno::Graphics::RenderEngine::Loader::bindIndicesBuffer(int indices[])
+void Duno::Graphics::RenderEngine::GLLoader::bindIndicesBuffer(unsigned int* indices)
 {
 
 	GLuint vboID;
@@ -88,12 +88,12 @@ void Duno::Graphics::RenderEngine::Loader::bindIndicesBuffer(int indices[])
 
 	vbos.push_back(vboID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vboID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof indices, &indices,GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices)/sizeof(indices[0]), indices, GL_STATIC_DRAW);
 
 
 }
 
-void Duno::Graphics::RenderEngine::Loader::cleanUp()
+void Duno::Graphics::RenderEngine::GLLoader::cleanUp()
 {
 	for (GLuint vbo : vbos) {
 		glDeleteBuffers(1,&vbo);																//delete vbos
