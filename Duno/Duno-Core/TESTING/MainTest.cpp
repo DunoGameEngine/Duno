@@ -8,36 +8,36 @@
 using namespace Duno;
 using namespace Graphics;
 
-void game(Display* newDisplay)
+void game(Display newDisplay)
 {
 	Logger::init();
 	Logger::setSpace("GameLoader");
 	FileSystem::setHome("../Assets/");
 
 	Logger::logln("Loading Assets");
-	AssetManeger<FileType::OBJFile> modelManeger;
-	modelManeger.loadAsset(&FileType::OBJFile::load(FileSystem::getFile("models/test.obj")));
+	AssetManeger<FileType::OBJFile, string> modelManeger;
+	modelManeger.loadAsset(FileType::OBJFile::load(FileSystem::getFile("models/test.obj")), "Test Model");
+	modelManeger.loadAsset(FileType::OBJFile::load(FileSystem::getFile("models/testModel.obj")), "Test Scene");
 
 	Logger::logln("Loading Display");
-	newDisplay->createDisplay("swag");
+	newDisplay.createDisplay("swag");
 
 	Logger::logln("Starting Main Game Loop");
 	Logger::setSpace("GameLoop");
-	while (newDisplay->running) {
-		newDisplay->updateDisplay();
+	while (newDisplay.running) {
+		newDisplay.updateDisplay();
 	}
 	Logger::back();
 	Logger::logln("Game Closing");
 }
 
 int main() {
-	Display* newDisplay;
+	Display newDisplay;
 
 	try { game(newDisplay); }
 	catch (DunoException* e) { MessageBoxA(0, e->errorOut().c_str(), "Duno Error", ALERT_SYSTEM_ERROR); }
 	catch (...) { MessageBoxA(0, "Unkown error occured", "Duno Error", ALERT_SYSTEM_ERROR); }
 
-	newDisplay->closeDisplay();
-	delete newDisplay;
+	newDisplay.closeDisplay();
 	return 0;
 }

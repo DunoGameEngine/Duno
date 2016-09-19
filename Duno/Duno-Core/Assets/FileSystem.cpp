@@ -3,7 +3,7 @@
 #include <streambuf>
 
 /* File */
-void File::loadFileData()
+void FileType::File::loadFileData()
 {
 	std::ifstream t(url_);
 	data_ = string((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
@@ -16,13 +16,13 @@ void FileSystem::setHome(string home)
 {
 	home_ = home;
 }
-File FileSystem::getFile(string url)
+FileType::File FileSystem::getFile(string url)
 {
-	return File(home_ + url);
+	return FileType::File(home_ + url);
 }
-File FileSystem::loadFile(string url)
+FileType::File FileSystem::loadFile(string url)
 {
-	File file = getFile(url);
+	FileType::File file = getFile(url);
 	file.loadFileData();
 	return file;
 }

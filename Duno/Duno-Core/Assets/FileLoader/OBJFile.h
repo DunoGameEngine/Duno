@@ -2,7 +2,6 @@
 #include "../FileSystem.h"
 #include <iostream>
 using namespace std;
-using namespace Duno::Graphics::RenderEngine;
 
 namespace FileType
 {
@@ -13,7 +12,7 @@ namespace FileType
 		/* Default constructor */
 		OBJFile() : File("") {}
 		/* Converts a normal file to an obj file */
-		static OBJFile load(File& file);
+		static OBJFile* load(File& file);
 		~OBJFile() { delete[] positionArray_; delete[] textureArray_; delete[] normalArray_; delete[] indicesArray_; }
 	private:
 		/* OBJ data */

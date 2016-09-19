@@ -35,7 +35,7 @@ struct Virtex
 	Virtex* dup;
 };
 /* Convert File to OBJFile (only temp) */
-FileType::OBJFile FileType::OBJFile::load(File& file)
+FileType::OBJFile* FileType::OBJFile::load(File& file)
 {	
 	Logger::setSpace("OBJLoader");
 	// Some vectors of data
@@ -110,17 +110,17 @@ FileType::OBJFile FileType::OBJFile::load(File& file)
 	unsigned int indecesSize = (unsigned int)indices.size();
 	unsigned int* indicesArray = &indices[0];
 	for (Virtex* virtex : vertices) delete virtex;
-	
-	OBJFile outFile;
-	outFile.postionSize_ = postionSize;
-	outFile.textureArray_ = textureArray;
-	outFile.normalSize_ = normalSize;
-	outFile.indecesSize_ = indecesSize;
 
-	outFile.postionSize_ = postionSize;
-	outFile.textureSize_ = textureSize;
-	outFile.normalSize_ = normalSize;
-	outFile.indicesArray_ = indicesArray;
+	OBJFile* outFile = new OBJFile();
+	outFile->postionSize_ = postionSize;
+	outFile->textureSize_ = textureSize;
+	outFile->normalSize_ = normalSize;
+	outFile->indecesSize_ = indecesSize;
+
+	outFile->positionArray_ = positionArray;
+	outFile->textureArray_ = textureArray;
+	outFile->normalArray_ = normalArray;
+	outFile->indicesArray_ = indicesArray;
 	Logger::logln(("Loaded OBJFile " + file.getURL()).c_str());
 	Logger::back();
 	return outFile;

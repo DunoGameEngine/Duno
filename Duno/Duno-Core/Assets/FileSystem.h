@@ -31,9 +31,9 @@ public:
 	/* Sets the asset home dir */
 	static void setHome(string home);
 	/* Returns a file */
-	static File getFile(string url);
+	static FileType::File getFile(string url);
 	/* Returns and loads a file */
-	static File loadFile(string url);
+	static FileType::File loadFile(string url);
 private:
 	/* Stores the home dir */
 	static string home_;

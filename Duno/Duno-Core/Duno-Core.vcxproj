@@ -138,6 +138,7 @@
     <ClInclude Include="OpenGL\GL.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Assets\AssetManeger.cpp" />
     <ClCompile Include="Assets\FileLoader\OBJFile.cpp" />
     <ClCompile Include="Assets\FileSystem.cpp" />
     <ClCompile Include="GameUtil\Exceptions.cpp" />
