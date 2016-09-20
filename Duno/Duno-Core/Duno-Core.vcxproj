@@ -129,7 +129,7 @@
     <ClInclude Include="Assets\AssetManeger.h" />
     <ClInclude Include="Assets\FileLoader\OBJFile.h" />
     <ClInclude Include="Assets\FileSystem.h" />
-    <ClInclude Include="Duno.h" />
+    <ClInclude Include="Duno_CS.h" />
     <ClInclude Include="GameUtil\Exceptions.h" />
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\Logger.h" />
@@ -142,6 +142,7 @@
     <ClCompile Include="Assets\AssetManeger.cpp" />
     <ClCompile Include="Assets\FileLoader\OBJFile.cpp" />
     <ClCompile Include="Assets\FileSystem.cpp" />
+    <ClCompile Include="Duno_CS.cpp" />
     <ClCompile Include="GameUtil\Exceptions.cpp" />
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
