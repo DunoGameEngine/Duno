@@ -31,6 +31,7 @@ void game(Display newDisplay)
 	Logger::logln("Game Closing");
 }
 
+//comment
 int main() {
 	Display newDisplay;
 
