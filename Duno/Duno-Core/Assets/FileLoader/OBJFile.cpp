@@ -26,7 +26,8 @@ struct Virtex
 		index(index),
 		position(position),
 		textureIndex(-1),
-		normalIndex(-1) {};
+		normalIndex(-1),
+		dup(NULL) {};
 	bool isSet() { return textureIndex != -1 && normalIndex != -1; }
 	unsigned int index;
 	unsigned int textureIndex;
@@ -34,8 +35,43 @@ struct Virtex
 	glm::vec3 position;
 	Virtex* dup;
 };
+void dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, vector<unsigned int>& indecies, vector<Virtex*>& vertices)
+{
+	if (preVirtex->textureIndex == t - 1 && preVirtex->normalIndex == n - 1)
+		indecies.push_back(preVirtex->index);
+	else
+	{
+		Virtex* anoutherVirtex = preVirtex->dup;
+		if (anoutherVirtex != NULL)
+			dealWithAlreadyProcessedVertex(anoutherVirtex, v, t, n, indecies, vertices);
+		else
+		{
+			Virtex* dupVirtex = new Virtex(vertices.size(), preVirtex->position);
+			dupVirtex->textureIndex = t - 1;
+			dupVirtex->normalIndex = n - 1;
+			preVirtex->dup = dupVirtex;
+			vertices.push_back(dupVirtex);
+			indecies.push_back(dupVirtex->index);
+		}
+	}
+}
+void prossesVertex(int v, int t, int n, vector<Virtex*>& vertices, vector<unsigned int>& indecies)
+{
+	Virtex* currentVirtex = vertices[v - 1];
+	if (!currentVirtex->isSet())
+	{
+		currentVirtex->textureIndex = t - 1;
+		currentVirtex->normalIndex = n - 1;
+		indecies.push_back(v - 1);
+	}
+	else
+	{
+		if (currentVirtex != NULL)
+			dealWithAlreadyProcessedVertex(currentVirtex, v, t, n, indecies, vertices);
+	}
+}
 /* Convert File to OBJFile (only temp) */
-FileType::OBJFile* FileType::OBJFile::load(File& file)
+FileType::OBJFile FileType::OBJFile::load(File& file)
 {	
 	Logger::setSpace("OBJLoader");
 	// Some vectors of data
@@ -72,10 +108,7 @@ FileType::OBJFile* FileType::OBJFile::load(File& file)
 			for (unsigned int i = 0; i < 3; i++)
 			{
 				int v, t, n; iss >> v >> t >> n;
-				Virtex* virtex = vertices[v - 1];
-				virtex->textureIndex = t - 1;
-				virtex->normalIndex = n - 1;
-				indices.push_back(v - 1);
+				prossesVertex(v, t, n, vertices, indices);
 			}
 		}
 		else
@@ -86,18 +119,15 @@ FileType::OBJFile* FileType::OBJFile::load(File& file)
 	}
 
 	/* Convert data to arrays */
-	unsigned int postionSize = (unsigned int)vertices.size() * 3;
-	unsigned int textureSize = (unsigned int)vertices.size() * 2;
-	unsigned int normalSize  = (unsigned int)vertices.size() * 3;
-	float* positionArray = new float[postionSize];
-	float* textureArray  = new float[textureSize];
-	float* normalArray   = new float[normalSize];
+	vector<float> positionArray = vector<float>(indices.size() * 3);
+	vector<float> textureArray  = vector<float>(indices.size() * 2);
+	vector<float> normalArray   = vector<float>(indices.size() * 3);
 	for (unsigned int i = 0; i < vertices.size(); i++)
 	{
 		Virtex* virtex = vertices[i];
 		glm::vec3 position = virtex->position;
-		glm::vec2 texture = textures.at(virtex->textureIndex);
-		glm::vec3 normal = normals.at(virtex->normalIndex);
+		glm::vec2 texture = textures[virtex->textureIndex];
+		glm::vec3 normal = normals[virtex->normalIndex];
 		positionArray[i * 3] = position.x;
 		positionArray[(i * 3) + 1] = position.y;
 		positionArray[(i * 3) + 2] = position.z;
@@ -107,21 +137,14 @@ FileType::OBJFile* FileType::OBJFile::load(File& file)
 		normalArray[(i * 3) + 1] = normal.y;
 		normalArray[(i * 3) + 2] = normal.z;
 	}
-	unsigned int indecesSize = (unsigned int)indices.size();
-	unsigned int* indicesArray = &indices[0];
 	for (Virtex* virtex : vertices) delete virtex;
 
-	OBJFile* outFile = new OBJFile();
-	outFile->postionSize_ = postionSize;
-	outFile->textureSize_ = textureSize;
-	outFile->normalSize_ = normalSize;
-	outFile->indecesSize_ = indecesSize;
-
-	outFile->positionArray_ = positionArray;
-	outFile->textureArray_ = textureArray;
-	outFile->normalArray_ = normalArray;
-	outFile->indicesArray_ = indicesArray;
+	ModelInfo* info = new ModelInfo();
+	info->positions = positionArray;
+	info->textures = textureArray;
+	info->normals = normalArray;
+	info->indices = indices;
 	Logger::logln(("Loaded OBJFile " + file.getURL()).c_str());
 	Logger::back();
-	return outFile;
+	return OBJFile(file, info);
 }

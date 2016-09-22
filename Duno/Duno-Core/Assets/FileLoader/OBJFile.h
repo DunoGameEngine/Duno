@@ -1,8 +1,16 @@
 #pragma once
 #include "../FileSystem.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
+struct ModelInfo
+{
+	vector<float> positions;
+	vector<float> textures;
+	vector<float> normals;
+	vector<unsigned int> indices;
+};
 namespace FileType
 {
 	/* An OBJ file */
@@ -11,19 +19,15 @@ namespace FileType
 	public:
 		/* Default constructor */
 		OBJFile() : File("") {}
+		OBJFile(File file, ModelInfo* info) : File(file), info(info) {}
 		/* Converts a normal file to an obj file */
-		static OBJFile* load(File& file);
-		~OBJFile() { delete[] positionArray_; delete[] textureArray_; delete[] normalArray_; delete[] indicesArray_; }
+		static OBJFile load(File& file);
+		~OBJFile() { delete info; }
+
+		/* Returns the models info */
+		ModelInfo* getInfo() { return info; }
 	private:
 		/* OBJ data */
-		unsigned int postionSize_;
-		unsigned int textureSize_;
-		unsigned int normalSize_;
-		unsigned int indecesSize_;
-
-		float* positionArray_;
-		float* textureArray_;
-		float* normalArray_;
-		unsigned int* indicesArray_;
+		ModelInfo* info;
 	};
 }

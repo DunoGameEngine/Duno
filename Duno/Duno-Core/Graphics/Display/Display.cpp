@@ -44,6 +44,8 @@ void Duno::Graphics::Display::createDisplay(char * title, int width, int height,
 	//set the clear colour
 	glClearColor(0.25, 0, 0.5, 0);
 
+	glewInit();
+
 }
 
 
@@ -53,9 +55,6 @@ void Duno::Graphics::Display::updateDisplay()
 	if (glfwWindowShouldClose(window)) {
 		running = false;
 	}
-
-	//delete if renderer does that
-	glClear(GL_COLOR_BUFFER_BIT); 
 
 	//swap images
 	glfwSwapBuffers(window);	
