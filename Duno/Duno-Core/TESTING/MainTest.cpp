@@ -50,6 +50,7 @@ void game(Display newDisplay)
 	delete testTexture;
 }
 
+//comment
 int main() {
 	Display newDisplay;
 
