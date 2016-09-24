@@ -7,7 +7,7 @@ public:
 	GLEntityRenderer();
 private:
 	virtual void onRenderAll() {};
-	virtual void onRenderModel(Types::PlainModel* model);
+	virtual void onRenderModel(DunoGameObject* model, DunoCamera* cam);
 
 	glm::mat4 projectionMatrix;
 	glm::mat4 viewMatrix;

@@ -2,26 +2,28 @@
 #include <glm\gtc\matrix_transform.hpp>
 
 #define MVP_MATRIX 0
+#define LIGHT_POS 1
 
 GLEntityRenderer::GLEntityRenderer()
 {
 	GLShader* shader = new GLShader("entity");
 	shader->addAtribute("position");
-	shader->addAtribute("normal");
 	shader->addAtribute("texture");
+	shader->addAtribute("normal");
 	shader->compile();
 
-	shader->allocateLocations(1);
+	shader->allocateLocations(2);
 	shader->setLocation(MVP_MATRIX, "mvp");
+	shader->setLocation(LIGHT_POS, "lightPos");
 	setShader(shader);
 
-	projectionMatrix = glm::perspective(70.0F, 720.0F/640.0F, 0.1F, 1000.0F);
-	viewMatrix = glm::translate(glm::rotate(glm::mat4(1), test, glm::vec3(0, 1, 0)), glm::vec3(0, 0, -4));
+	projectionMatrix = glm::perspective(70.0F, 1280.0F/720.0F, 0.1F, 1000.0F);
 }
 
-void GLEntityRenderer::onRenderModel(Types::PlainModel* model)
+void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
 {
-	viewMatrix = glm::translate(glm::rotate(glm::rotate(glm::mat4(1), -0.4F, glm::vec3(1, 0, 0)), test, glm::vec3(0, 1, 0)), glm::vec3(0, -2, 0));
-	test += 0.01F;
-	getShader()->loadVector(projectionMatrix * viewMatrix, MVP_MATRIX);
+	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix(), MVP_MATRIX);
+	getShader()->loadVector(glm::vec3(sin(test)*5.0F, 7, 0), LIGHT_POS);
+	//getShader()->loadVector(-cam->getPosition(), LIGHT_POS);
+	test += 0.02F;
 }

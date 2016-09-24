@@ -13,119 +13,209 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{b316d0c5-aea3-4993-8529-a56226bbea64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObject">
+      <UniqueIdentifier>{acdfa064-c3f3-4165-a122-9848eb2d700b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameUtil">
+      <UniqueIdentifier>{4b8069ee-d56b-4cdc-8b62-c55b4ae71c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{d8faac05-eb17-4edb-9ceb-64e6bda9c25b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OpenGL">
+      <UniqueIdentifier>{c48dcb52-337b-403b-92e7-aacb7e573c90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TESTING">
+      <UniqueIdentifier>{e70fc8bd-f42e-4ca5-bfb3-f456d238301f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets\FileLoader">
+      <UniqueIdentifier>{4e73f507-ce0e-4bc2-8899-c72076a64689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\Display">
+      <UniqueIdentifier>{dc1c0e22-6236-4b93-8792-372880c89cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\RenderEngine">
+      <UniqueIdentifier>{0e2dfb69-69a1-4ef6-a352-394a40a65b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\RenderEngine\Types">
+      <UniqueIdentifier>{b9aa6ad9-bd30-4aab-b31f-ae16aabff946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets">
+      <UniqueIdentifier>{5ed33db6-927d-4d0f-a8b9-2ead40e2f200}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject">
+      <UniqueIdentifier>{14cfcafa-f4ab-4d48-a6e4-dfcedb73c847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameUtil">
+      <UniqueIdentifier>{c4d4b987-9163-4d5c-a96e-35003dfe90fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{ab823fd0-30ee-49c1-b21e-b60b2c342a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OpenGL">
+      <UniqueIdentifier>{4ab687b1-2a00-45e7-8dcd-2e6b5e801958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TESTING">
+      <UniqueIdentifier>{ba033292-9dab-4507-9c17-448ca5555070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets\FileLoader">
+      <UniqueIdentifier>{94d82153-3cfa-423f-9476-c3683e971ef6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Display">
+      <UniqueIdentifier>{0cdf9bb7-eadb-4b84-92ed-2aae4efa83fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine">
+      <UniqueIdentifier>{523a975e-c9fc-4074-bad1-bdc53ba9cef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine\Types">
+      <UniqueIdentifier>{8a063d15-e43d-44a6-a4fd-9d3cb5135042}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Graphics\Display\Display.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameUtil\GameTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameUtil\Logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\GL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets\AssetManeger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets\FileSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameUtil\Exceptions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets\FileLoader\OBJFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\renderEngine\GLLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Duno_CS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Assets\AssetManeger.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\FileSystem.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
     <ClInclude Include="Assets\FileLoader\ImageFile.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Assets\FileLoader</Filter>
     </ClInclude>
     <ClInclude Include="Assets\FileLoader\stb_image.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Assets\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets\FileLoader\OBJFile.h">
+      <Filter>Header Files\Assets\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\DunoGameObject.h">
+      <Filter>Header Files\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="GameUtil\GLExceptions.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtil\GameTimer.h">
+      <Filter>Header Files\GameUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtil\Exceptions.h">
+      <Filter>Header Files\GameUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtil\Logger.h">
+      <Filter>Header Files\GameUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Display\Display.h">
+      <Filter>Header Files\Graphics\Display</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLEntityRenderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\GLLoader.h">
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLRenderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLShader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLTextureLoader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\Types\GLTexture.h">
+      <Filter>Header Files\Graphics\RenderEngine\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h">
+      <Filter>Header Files\Graphics\RenderEngine\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\GL.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\DunoCamera.h">
+      <Filter>Header Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Display\DunoMouse.h">
+      <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Display\DunoKeyboard.h">
+      <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graphics\Display\Display.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TESTING\MainTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameUtil\GameTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameUtil\Logger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\renderEngine\Types\PlainModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Assets\FileSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameUtil\Exceptions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Assets\FileLoader\OBJFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\renderEngine\GLLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Assets\AssetManeger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Duno_CS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Assets\AssetManeger.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="Assets\FileSystem.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
     <ClCompile Include="Assets\FileLoader\ImageFile.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Assets\FileLoader</Filter>
     </ClCompile>
     <ClCompile Include="Assets\FileLoader\stb_image.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Assets\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Assets\FileLoader\OBJFile.cpp">
+      <Filter>Source Files\Assets\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\DunoGameObject.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtil\GameTimer.cpp">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtil\Exceptions.cpp">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtil\Logger.cpp">
+      <Filter>Source Files\GameUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Display\Display.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\GLLoader.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLRenderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLShader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLTextureLoader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\Types\GLTexture.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Graphics\RenderEngine\Types</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLEntityRenderer.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\Types\PlainModel.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="TESTING\MainTest.cpp">
+      <Filter>Source Files\TESTING</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\DunoCamera.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Display\DunoMouse.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Display\DunoKeyboard.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\Lighting\DunoLightManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

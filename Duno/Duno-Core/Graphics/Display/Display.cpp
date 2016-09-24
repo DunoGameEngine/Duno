@@ -1,12 +1,14 @@
 #include "Display.h"
+#include "DunoMouse.h"
+#include "DunoKeyboard.h"
 
 Duno::Graphics::Display::Display()
 {
 
 	//set default properties for a window
 	m_title = "Duno_Engine";
-	m_width = 720;
-	m_height = 640;
+	m_width = 1280;
+	m_height = 720;
 	m_fps = 60;
 	m_useVsync = false;
 }
@@ -15,6 +17,19 @@ Duno::Graphics::Display::~Display()
 {
 }
 
+static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	DunoMouse::update(glm::vec2(xpos, ypos));
+}
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, 1);
+	if (action == GLFW_PRESS)
+		DunoKeyboard::addKey(key);
+	if (action == GLFW_RELEASE)
+		DunoKeyboard::removeKey(key);
+}
 void Duno::Graphics::Display::createDisplay(char * title, int width, int height, int fps, bool useVsync)
 {
 	//set the private members to the value of passed in parameters
@@ -37,6 +52,9 @@ void Duno::Graphics::Display::createDisplay(char * title, int width, int height,
 		glfwTerminate();
 		running = false;
 	}
+	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetKeyCallback(window, key_callback);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	//enable usage of opengl in the window, set the clear colour
 	glfwMakeContextCurrent(window);

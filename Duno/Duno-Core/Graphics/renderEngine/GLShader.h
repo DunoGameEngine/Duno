@@ -24,7 +24,8 @@ public:
 	void bind() { glUseProgram(shaderProgram); }
 
 	/* Loads a matrix to a uniform */
-	void loadVector(const glm::mat4& matrix, unsigned int location) { glUniformMatrix4fv(locations[location], 1, false, glm::value_ptr(matrix)); };
+	void loadMatrix(const glm::mat4& matrix, unsigned int location) { glUniformMatrix4fv(locations[location], 1, false, glm::value_ptr(matrix)); };
+	void loadVector(const glm::vec3& vector, unsigned int location) { glUniform3f(locations[location], vector.x, vector.y, vector.z); };
 private:
 	GLuint shaderProgram;
 	GLuint shaders[2];

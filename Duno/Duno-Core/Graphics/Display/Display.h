@@ -34,7 +34,7 @@ namespace Duno {namespace Graphics {
 			~Display();
 
 			//create the display method
-			void createDisplay(char* title = "Duno_Engine", int width = 720, int height = 640,
+			void createDisplay(char* title = "Duno_Engine", int width = 1280, int height = 720,
 				int fps = 60, bool useVsync = false);
 
 			//will be called each frame
