@@ -1,6 +1,7 @@
 #include "DunoCamera.h"
 #include "../Graphics/Display/DunoMouse.h"
 #include "../Graphics/Display/DunoKeyboard.h"
+#include "../GameUtil/GameTimer.h"
 #include <glm\gtc\matrix_transform.hpp>
 #include <iostream>
 using namespace std;
@@ -21,18 +22,19 @@ void DunoCamera::updateFreeMove(float speed)
 {
 	float rot = rotaiton.y;
 
-	float x = sin(TORAD(rot)) * speed;
-	float z = cos(TORAD(rot)) * speed;
+	float gameSpeed = GameTimer::getFrameTimeSeconds() * speed;
+	float x = sin(TORAD(rot)) * gameSpeed;
+	float z = cos(TORAD(rot)) * gameSpeed;
 	if (DunoKeyboard::isKeyDown(DUNO_KEY_W)) { position.x -= x; position.z += z; }
 	if (DunoKeyboard::isKeyDown(DUNO_KEY_S)) { position.x += x; position.z -= z; }
 	rot -= 90;
-	x = sin(TORAD(rot)) * speed;
-	z = cos(TORAD(rot)) * speed;
+	x = sin(TORAD(rot)) * gameSpeed;
+	z = cos(TORAD(rot)) * gameSpeed;
 	if (DunoKeyboard::isKeyDown(DUNO_KEY_A)) { position.x -= x; position.z += z; }
 	if (DunoKeyboard::isKeyDown(DUNO_KEY_D)) { position.x += x; position.z -= z; }
 
-	if (DunoKeyboard::isKeyDown(DUNO_KEY_SPACE)) { position.y -= speed; }
-	if (DunoKeyboard::isKeyDown(DUNO_KEY_LEFT_SHIFT)) { position.y += speed; }
+	if (DunoKeyboard::isKeyDown(DUNO_KEY_SPACE)) { position.y -= gameSpeed; }
+	if (DunoKeyboard::isKeyDown(DUNO_KEY_LEFT_SHIFT)) { position.y += gameSpeed; }
 }
 
 glm::mat4 DunoCamera::getTransformationMatrix()

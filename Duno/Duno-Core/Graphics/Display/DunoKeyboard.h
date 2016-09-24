@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+/* All the key codes */
 #define DUNO_KEY_UNKNOWN            -1
 #define DUNO_KEY_SPACE              32
 #define DUNO_KEY_APOSTROPHE         39
@@ -126,14 +127,18 @@ using namespace std;
 #define DUNO_KEY_MENU               348
 #define DUNO_KEY_LAST               DUNO_KEY_MENU
 
+/* Handels key envents */
 class DunoKeyboard
 {
 public:
+	/* add a key that has been pressed */
 	static void addKey(int key) { keysPressed.push_back(key); };
+	/* remove a key when it has been released */
 	static void removeKey(int key) { keysPressed.erase(std::find(keysPressed.begin(), keysPressed.end(), key)); };
 
+	/* Returns if a key has been pressed */
 	static bool isKeyDown(int key) { return std::find(keysPressed.begin(), keysPressed.end(), key) != keysPressed.end(); };
-	static void test() { for (int key : keysPressed) cout << key << endl; }
 private:
+	/* Stores the keys that have been pressed */
 	static vector<int> keysPressed;
 };

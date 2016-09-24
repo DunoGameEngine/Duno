@@ -2,6 +2,8 @@
 #include <chrono>
 using namespace std;
 
+float GameTimer::delta;
+long GameTimer::lastFrameTime;
 /* Uses the c++11 library 'chrono' to get the current time */
 long GameTimer::currentTimeInMills() 
 {

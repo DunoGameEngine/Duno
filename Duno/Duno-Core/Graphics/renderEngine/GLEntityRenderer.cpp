@@ -1,4 +1,5 @@
 #include "GLEntityRenderer.h"
+#include "../GameUtil/GameTimer.h"
 #include <glm\gtc\matrix_transform.hpp>
 
 #define MVP_MATRIX 0
@@ -17,7 +18,7 @@ GLEntityRenderer::GLEntityRenderer()
 	shader->setLocation(LIGHT_POS, "lightPos");
 	setShader(shader);
 
-	projectionMatrix = glm::perspective(70.0F, 1280.0F/720.0F, 0.1F, 1000.0F);
+	//projectionMatrix = glm::perspective(70.0F, 1280.0F/720.0F, 0.1F, 1000.0F);
 }
 
 void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
@@ -25,5 +26,5 @@ void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
 	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix(), MVP_MATRIX);
 	getShader()->loadVector(glm::vec3(sin(test)*10.0F, 7, 0), LIGHT_POS);
 	//getShader()->loadVector(-cam->getPosition(), LIGHT_POS);
-	test += 0.01F;
+	test += GameTimer::getFrameTimeSeconds() * 1.0F;
 }

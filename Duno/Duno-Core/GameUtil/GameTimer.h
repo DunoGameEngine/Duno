@@ -8,14 +8,14 @@ public:
 	static long currentTimeInMills();
 	
 	/* Returns how long the last frame took to render and/or update */
-	float getFrameTimeSeconds() { return delta; }
+	static float getFrameTimeSeconds() { return delta; }
 	
 	/* Updates the time (called after every frame) */
-	void update();
+	static void update();
 private:
 	/* Keeps the time when the last frame started */
-	long lastFrameTime;
+	static long lastFrameTime;
 	
 	/* Keeps how long the last frame took to render and/or update */
-	float delta;
+	static float delta;
 };

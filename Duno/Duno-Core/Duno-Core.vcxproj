@@ -131,6 +131,7 @@
     <ClInclude Include="Assets\FileLoader\OBJFile.h" />
     <ClInclude Include="Assets\FileLoader\stb_image.h" />
     <ClInclude Include="Assets\FileSystem.h" />
+    <ClInclude Include="DunoGame.h" />
     <ClInclude Include="Duno_CS.h" />
     <ClInclude Include="GameObject\DunoCamera.h" />
     <ClInclude Include="GameObject\DunoGameObject.h" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Graphics\Display\DunoMouse.h" />
     <ClInclude Include="Graphics\renderEngine\GLEntityRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLLoader.h" />
+    <ClInclude Include="Graphics\renderEngine\GLMainRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLShader.h" />
     <ClInclude Include="Graphics\renderEngine\GLTextureLoader.h" />
@@ -157,6 +159,7 @@
     <ClCompile Include="Assets\FileLoader\OBJFile.cpp" />
     <ClCompile Include="Assets\FileLoader\stb_image.cpp" />
     <ClCompile Include="Assets\FileSystem.cpp" />
+    <ClCompile Include="DunoGame.cpp" />
     <ClCompile Include="Duno_CS.cpp" />
     <ClCompile Include="GameObject\DunoCamera.cpp" />
     <ClCompile Include="GameObject\DunoGameObject.cpp" />
@@ -168,6 +171,7 @@
     <ClCompile Include="Graphics\Display\DunoMouse.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLEntityRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLLoader.cpp" />
+    <ClCompile Include="Graphics\renderEngine\GLMainRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLShader.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLTextureLoader.cpp" />

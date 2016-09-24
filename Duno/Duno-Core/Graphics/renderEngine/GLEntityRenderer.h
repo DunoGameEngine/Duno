@@ -1,6 +1,7 @@
 #pragma once
 #include "GLRenderer.h"
 
+/* Renders the scenes entity's */
 class GLEntityRenderer : public GLRenderer
 {
 public:
@@ -8,8 +9,6 @@ public:
 private:
 	virtual void onRenderAll() {};
 	virtual void onRenderModel(DunoGameObject* model, DunoCamera* cam);
-
-	glm::mat4 projectionMatrix;
-	glm::mat4 viewMatrix;
+	
 	float test = 0;
 };

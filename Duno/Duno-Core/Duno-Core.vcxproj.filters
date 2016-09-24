@@ -147,6 +147,12 @@
     <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\GLMainRenderer.h">
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DunoGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Duno_CS.cpp">
@@ -216,6 +222,12 @@
       <Filter>Source Files\Graphics\Display</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\Lighting\DunoLightManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\GLMainRenderer.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="DunoGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

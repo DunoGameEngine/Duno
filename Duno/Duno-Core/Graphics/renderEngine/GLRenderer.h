@@ -13,6 +13,8 @@ public:
 	void render(DunoCamera* cam);
 	/* Adds an object to the list to be rendered */
 	void addModel(DunoGameObject* model) { models.push_back(model); }
+	/* Sets the current projection matrix */
+	void setProjectionMatrix(const glm::mat4& matrix) { projectionMatrix = matrix; }
 	~GLRenderer() { delete shader; }
 protected:
 	/* Gets called when the scene is rendered */
@@ -24,6 +26,8 @@ protected:
 	void setShader(GLShader* shader) { this->shader = shader; }
 	/* Returns the current shader */
 	GLShader* getShader() { return shader; }
+	/* The current projection matrix */
+	glm::mat4 projectionMatrix;
 private:
 	/* All the objects in the scene */
 	vector<DunoGameObject*> models;

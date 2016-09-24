@@ -30,7 +30,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	if (action == GLFW_RELEASE)
 		DunoKeyboard::removeKey(key);
 }
-void Duno::Graphics::Display::createDisplay(char * title, int width, int height, int fps, bool useVsync)
+void Duno::Graphics::Display::createDisplay(const char * title, int width, int height, int fps, bool useVsync)
 {
 	//set the private members to the value of passed in parameters
 	m_title			= title;
