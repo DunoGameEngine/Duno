@@ -23,7 +23,7 @@ GLEntityRenderer::GLEntityRenderer()
 void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
 {
 	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix(), MVP_MATRIX);
-	getShader()->loadVector(glm::vec3(sin(test)*5.0F, 7, 0), LIGHT_POS);
+	getShader()->loadVector(glm::vec3(sin(test)*10.0F, 7, 0), LIGHT_POS);
 	//getShader()->loadVector(-cam->getPosition(), LIGHT_POS);
-	test += 0.02F;
+	test += 0.01F;
 }
