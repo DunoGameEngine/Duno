@@ -1,6 +1,8 @@
 #include "GLTextureLoader.h"
 #include "../Assets/FileLoader/stb_image.h"
 #include "../OpenGL/GL.h"
+#include <iostream>
+using namespace std;
 
 void GLTextureLoader::bindTexture(GLTexture* texture, unsigned int place)
 { 

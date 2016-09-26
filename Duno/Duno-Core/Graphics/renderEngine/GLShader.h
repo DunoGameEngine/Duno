@@ -22,6 +22,8 @@ public:
 	void addAtribute(string attribute);
 	/* Binds this shader */
 	void bind() { glUseProgram(shaderProgram); }
+	/* Unbinds the current shader */
+	void unbind() { glUseProgram(0); }
 
 	/* Converts a vector array to a GLFloat array */
 	GLfloat* toArray(glm::vec3* vectorArray, unsigned int arraySize) { GLfloat* fa = new GLfloat[arraySize * 3]; for (unsigned int i = 0; i < arraySize; i++) { fa[i * 3] = vectorArray[i].x; fa[(i * 3) + 1] = vectorArray[i].y; fa[(i * 3) + 2] = vectorArray[i].z; } return fa; }

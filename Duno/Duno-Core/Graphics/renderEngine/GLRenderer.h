@@ -10,7 +10,8 @@ class GLRenderer
 {
 public:
 	/* Renders all the objects */
-	void render(DunoCamera* cam);
+	void render(vector<DunoGameObject*> models, DunoCamera* cam);
+	void render(DunoCamera* cam) { render(models, cam); };
 	/* Adds an object to the list to be rendered */
 	void addModel(DunoGameObject* model) { models.push_back(model); }
 	/* Sets the current projection matrix */
@@ -18,7 +19,7 @@ public:
 	~GLRenderer() { delete shader; }
 protected:
 	/* Gets called when the scene is rendered */
-	virtual void onRenderAll() = 0;
+	virtual void onRenderAll(DunoCamera* cam) = 0;
 	/* Gets called when each object is rendered */
 	virtual void onRenderModel(DunoGameObject* model, DunoCamera* cam) = 0;
 
@@ -28,9 +29,9 @@ protected:
 	GLShader* getShader() { return shader; }
 	/* The current projection matrix */
 	glm::mat4 projectionMatrix;
-private:
 	/* All the objects in the scene */
 	vector<DunoGameObject*> models;
+private:
 	/* The current shader */
 	GLShader* shader;
 };

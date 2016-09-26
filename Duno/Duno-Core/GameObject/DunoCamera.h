@@ -15,6 +15,9 @@ public:
 	virtual glm::mat4 getTransformationMatrix();
 	/* Returns the cameras position */
 	glm::vec3 getPosition() { return position; }
+	void setPosition(glm::vec3 pos) { position = pos; }
+	glm::vec3 getRotation() { return rotaiton; };
+	void setRoation(glm::vec3 rot) { rotaiton = rot; }
 private:
 	/* Stores the last mouse position to calculate motion */
 	glm::vec2 preMousePos;

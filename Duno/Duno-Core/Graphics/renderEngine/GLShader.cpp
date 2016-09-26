@@ -63,8 +63,10 @@ void GLShader::compile()
 	glValidateProgram(shaderProgram);
 	//errorCheck(shaderProgram, GL_VALIDATE_STATUS);
 
+	glUseProgram(shaderProgram);
 	glUniform1i(glGetUniformLocation(shaderProgram, "defuse"), 0);
 	glUniform1i(glGetUniformLocation(shaderProgram, "bump"), 1);
+	glUseProgram(0);
 }
 
 GLShader::~GLShader()

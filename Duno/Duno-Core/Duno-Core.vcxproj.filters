@@ -153,6 +153,12 @@
     <ClInclude Include="DunoGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\GLFBO.h">
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\GLShadowRenderer.h">
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Duno_CS.cpp">
@@ -229,6 +235,12 @@
     </ClCompile>
     <ClCompile Include="DunoGame.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\GLFBO.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\GLShadowRenderer.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

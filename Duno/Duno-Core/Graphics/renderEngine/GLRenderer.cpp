@@ -3,10 +3,10 @@
 #include <iostream>
 using namespace std;
 
-void GLRenderer::render(DunoCamera* cam)
+void GLRenderer::render(vector<DunoGameObject*> models, DunoCamera* cam)
 {
+	onRenderAll(cam);
 	shader->bind();
-	onRenderAll();
 	for (DunoGameObject* object : models)
 	{
 		glBindVertexArray(object->getModelID());
@@ -16,4 +16,5 @@ void GLRenderer::render(DunoCamera* cam)
 		glDrawElements(GL_TRIANGLES, object->getModelLegnth(), GL_UNSIGNED_INT, nullptr);
 	}
 	glBindVertexArray(0);
+	shader->unbind();
 }

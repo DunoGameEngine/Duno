@@ -3,6 +3,7 @@
 #include "../Assets/FileLoader/OBJFile.h"
 #include "../GameUtil/Exceptions.h"
 #include "../Graphics/Display/DunoMouse.h"
+#include "../Graphics/renderEngine/GLShadowRenderer.h"
 #include <Windows.h>
 using namespace Duno;
 using namespace Graphics;
@@ -14,10 +15,11 @@ int main() {
 
 	GLDunoGame* game = new GLDunoGame();
 	game->addRenderer(new GLEntityRenderer());
+	//game->addRenderer(new GLShadowRenderer());
 	game->updateProjectionMatrix();
 
 	GLTexture* defuse = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick.png")));
-	GLTexture* bump = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick_bump.png")));
+	GLTexture* bump = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick_normal.png")));
 	GLMateral* mat = new GLMateral(defuse, bump);
 	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/testModel.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
 
