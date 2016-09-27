@@ -34,5 +34,5 @@ void main(void) {
 	}
 	defuseLight = max(defuseLight, 0.1);
 	vec4 reflection = texture(cubeMap, vec3(reflectedVector.x, reflectedVector.y, reflectedVector.z));
-	Frag_Color = mix(texture(defuse, vec2(tex.x, -tex.y)) * vec4(defuseLight, 1), reflection, 0.5);
+	Frag_Color = mix(texture(defuse, vec2(tex.x, -tex.y)) * vec4(defuseLight, 1), reflection, 0.8);
 }

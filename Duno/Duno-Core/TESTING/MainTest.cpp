@@ -24,6 +24,7 @@ int main() {
 	GLTexture* defuse = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick.png")));
 	GLTexture* bump = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick_normal.png")));
 	GLMateral* mat = new GLMateral(defuse, bump);
+	//game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/testModel.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
 	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/bunny.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
 	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/dragon.obj"))), mat, glm::vec3(20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
 	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/test.obj"))), mat, glm::vec3(-20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
