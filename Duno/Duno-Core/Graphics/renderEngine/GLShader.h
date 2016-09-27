@@ -16,6 +16,8 @@ public:
 
 	/* Allocates an amount of space to store the uniform locations */
 	void allocateLocations(unsigned int size) { locations = new GLuint[size]; }
+	/* Expands the current uniform locations storage spcae */
+	void expandeLoactions(unsigned int from, unsigned int to) { GLuint* loc = new GLuint[to]; for (unsigned int i = 0; i < from; i++) loc[i] = locations[i]; delete locations; locations = loc; }
 	/* Assighens a location */
 	void setLocation(unsigned int location, string uniform) { locations[location] = glGetUniformLocation(shaderProgram, uniform.c_str()); };
 	/* Adds an atribute before compile */

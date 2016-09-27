@@ -24,6 +24,58 @@ Types::PlainModel* GLLoader::load(vector<float> positions, vector<float> texture
 	unbindVAO();
 	return new Types::PlainModel(VAO, 0, indices.size(), true);
 }
+Types::PlainModel* GLLoader::loadSkybox()
+{
+	int VAO = createVAO();
+	float size = 500.0F;
+	float positions[] = {
+		-size,  size, -size,
+		-size, -size, -size,
+		size, -size, -size,
+		size, -size, -size,
+		size,  size, -size,
+		-size,  size, -size,
+
+		-size, -size,  size,
+		-size, -size, -size,
+		-size,  size, -size,
+		-size,  size, -size,
+		-size,  size,  size,
+		-size, -size,  size,
+
+		size, -size, -size,
+		size, -size,  size,
+		size,  size,  size,
+		size,  size,  size,
+		size,  size, -size,
+		size, -size, -size,
+
+		-size, -size,  size,
+		-size,  size,  size,
+		size,  size,  size,
+		size,  size,  size,
+		size, -size,  size,
+		-size, -size,  size,
+
+		-size,  size, -size,
+		size,  size, -size,
+		size,  size,  size,
+		size,  size,  size,
+		-size,  size,  size,
+		-size,  size, -size,
+
+		-size, -size, -size,
+		-size, -size,  size,
+		size, -size, -size,
+		size, -size, -size,
+		-size, -size, size,
+		size, -size,  size
+	};
+	vector<float> positionsVector = vector<float>(begin(positions), end(positions));
+	storeDataInVBO(positionsVector, 3, 0);
+	unbindVAO();
+	return new Types::PlainModel(VAO, 0, positionsVector.size(), false);
+}
 
 Types::PlainModel* GLLoader::load(FileType::OBJFile file)
 {
@@ -54,7 +106,7 @@ void GLLoader::unbindVAO()
 }
 
 
-GLuint GLLoader::storeDataInVBO(vector<float> data, unsigned int dataSize, unsigned int index)
+GLuint GLLoader::storeDataInVBO(vector<float> data, unsigned int datasize, unsigned int index)
 {
 	//create new gl int variable
 	GLuint vboID;
@@ -69,7 +121,7 @@ GLuint GLLoader::storeDataInVBO(vector<float> data, unsigned int dataSize, unsig
 	glBindBuffer(GL_ARRAY_BUFFER, vboID);
 	glBufferData(GL_ARRAY_BUFFER, data.size()*sizeof(data[0]), data.data(), GL_STATIC_DRAW);
 	glEnableVertexAttribArray(index);
-	glVertexAttribPointer(index, dataSize, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(index, datasize, GL_FLOAT, GL_FALSE, 0, 0);
 
 	//increase the number of vbos in the vao
 	vaoLength++;

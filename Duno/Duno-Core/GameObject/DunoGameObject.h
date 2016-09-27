@@ -21,6 +21,7 @@ public:
 	/* Returns the model's legnth */
 	unsigned int getModelLegnth() { return model->getVaoLength(); }
 	GLMateral* getMateral() { return mat; }
+	bool getIndexBuffer() { return model->getHasIndexBuffer(); }
 protected:
 	/* Display Data */
 	PlainModel* model;

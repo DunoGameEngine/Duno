@@ -3,6 +3,8 @@
 #include "../Assets/FileSystem.h"
 #include <fstream>
 #include <vector>
+#include <iostream>
+using namespace std;
 
 void GLShader::addAtribute(string attribute)
 {
@@ -46,6 +48,7 @@ GLuint compileShader(const char* src, GLuint length, GLenum shaderType, GLuint s
 void GLShader::compile()
 {
 	shaderProgram = glCreateProgram();
+	cout << "Shaders/" + name + "/shader.vs" << endl;
 	string virtexCode = FileSystem::loadFile("Shaders/" + name + "/shader.vs").getData();
 	string fragmentCode = FileSystem::loadFile("Shaders/" + name + "/shader.fs").getData();
 
@@ -57,7 +60,7 @@ void GLShader::compile()
 	for (unsigned int i = 0; i < attributes->size(); i++)
 		glBindAttribLocation(shaderProgram, i, attributes->at(i).c_str());
 	delete attributes;
-
+	
 	glLinkProgram(shaderProgram);
 	//errorCheck(shaderProgram, GL_LINK_STATUS);
 	glValidateProgram(shaderProgram);

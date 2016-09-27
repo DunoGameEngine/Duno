@@ -159,6 +159,12 @@
     <ClInclude Include="Graphics\renderEngine\GLShadowRenderer.h">
       <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\GLSkyBoxRenderer.h">
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\GLEntityReflectiveRenderer.h">
+      <Filter>Header Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Duno_CS.cpp">
@@ -240,6 +246,12 @@
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLShadowRenderer.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\GLSkyBoxRenderer.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\GLEntityReflectiveRenderer.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -142,6 +142,7 @@
     <ClInclude Include="Graphics\Display\Display.h" />
     <ClInclude Include="Graphics\Display\DunoKeyboard.h" />
     <ClInclude Include="Graphics\Display\DunoMouse.h" />
+    <ClInclude Include="Graphics\renderEngine\GLEntityReflectiveRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLEntityRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLFBO.h" />
     <ClInclude Include="Graphics\renderEngine\GLLoader.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Graphics\renderEngine\GLRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLShader.h" />
     <ClInclude Include="Graphics\renderEngine\GLShadowRenderer.h" />
+    <ClInclude Include="Graphics\renderEngine\GLSkyBoxRenderer.h" />
     <ClInclude Include="Graphics\renderEngine\GLTextureLoader.h" />
     <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightManager.h" />
     <ClInclude Include="Graphics\renderEngine\Types\GLTexture.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="Graphics\Display\Display.cpp" />
     <ClCompile Include="Graphics\Display\DunoKeyboard.cpp" />
     <ClCompile Include="Graphics\Display\DunoMouse.cpp" />
+    <ClCompile Include="Graphics\renderEngine\GLEntityReflectiveRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLEntityRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLFBO.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLLoader.cpp" />
@@ -178,6 +181,7 @@
     <ClCompile Include="Graphics\renderEngine\GLRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLShader.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLShadowRenderer.cpp" />
+    <ClCompile Include="Graphics\renderEngine\GLSkyBoxRenderer.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLTextureLoader.cpp" />
     <ClCompile Include="Graphics\renderEngine\Lighting\DunoLightManager.cpp" />
     <ClCompile Include="Graphics\renderEngine\Types\GLTexture.cpp" />

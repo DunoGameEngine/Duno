@@ -12,9 +12,9 @@ using namespace std;
 #define DIR_LIGHTDIR 4
 #define DIR_LENGTH 5
 
-GLEntityRenderer::GLEntityRenderer()
+GLEntityRenderer::GLEntityRenderer(string shaderName)
 {
-	GLShader* shader = new GLShader("entity");
+	GLShader* shader = new GLShader(shaderName);
 	shader->addAtribute("position");
 	shader->addAtribute("texture");
 	shader->addAtribute("normal");
@@ -34,11 +34,15 @@ void GLEntityRenderer::onRenderAll(DunoCamera* cam) {}
 
 void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
 {
-	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix(), MVP_MATRIX);
+	GLTextureLoader::bindTexture(model->getMateral()->getDefuse(), 0);
+	GLTextureLoader::bindTexture(model->getMateral()->getBump(), 1);
+
+	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix() * model->getTransformationMatrix(), MVP_MATRIX);
 	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(sin(test)*10, 4, 0) }, 1, POINT_LIGHTPOS);
 	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(1,1,1) }, 1, POINT_LIGHTCOLOUR);
-	getShader()->loadInt(1, POINT_LENGTH);
+	getShader()->loadInt(0, POINT_LENGTH);
 	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(0.2,-1,0.2) }, 1, DIR_LIGHTDIR);
 	getShader()->loadInt(1, DIR_LENGTH);
 	test += GameTimer::getFrameTimeSeconds() * 1.0F;
+	addRenderModel(model, cam);
 }

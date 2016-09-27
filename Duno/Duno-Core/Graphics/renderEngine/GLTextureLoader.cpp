@@ -9,6 +9,11 @@ void GLTextureLoader::bindTexture(GLTexture* texture, unsigned int place)
 	glActiveTexture(GL_TEXTURE0 + place);
 	glBindTexture(GL_TEXTURE_2D, texture->getTextureID()); 
 };
+void GLTextureLoader::bindTextureCube(GLTexture* texture, unsigned int place)
+{
+	glActiveTexture(GL_TEXTURE0 + place);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, texture->getTextureID());
+};
 void GLTextureLoader::deleteTexture(GLTexture* texture) 
 { 
 	GLuint textureID = (GLuint)texture->getTextureID(); 
@@ -25,7 +30,7 @@ GLTexture* GLTextureLoader::loadTexture(FileType::ImageFile file)
 
 	GLuint texture;
 	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
 
 	// Set texture params
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -40,5 +45,42 @@ GLTexture* GLTextureLoader::loadTexture(FileType::ImageFile file)
 	stbi_image_free(imageData);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
+	return new GLTexture(texture);
+}
+
+GLTexture* GLTextureLoader::loadCubeMap(FileType::File path)
+{
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
+
+	int width, height, numComponents;
+	unsigned char* imageData = stbi_load((path.getURL() + "posx.png").c_str(), &width, &height, &numComponents, 4);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+	stbi_image_free(imageData);
+	imageData = stbi_load((path.getURL() + "posy.png").c_str(), &width, &height, &numComponents, 4);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+	stbi_image_free(imageData);
+	imageData = stbi_load((path.getURL() + "posz.png").c_str(), &width, &height, &numComponents, 4);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+	stbi_image_free(imageData);
+	imageData = stbi_load((path.getURL() + "negx.png").c_str(), &width, &height, &numComponents, 4);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+	stbi_image_free(imageData);
+	imageData = stbi_load((path.getURL() + "negy.png").c_str(), &width, &height, &numComponents, 4);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+	stbi_image_free(imageData);
+	imageData = stbi_load((path.getURL() + "negz.png").c_str(), &width, &height, &numComponents, 4);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+	stbi_image_free(imageData);
+
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_BASE_LEVEL, 0);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAX_LEVEL, 0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 	return new GLTexture(texture);
 }

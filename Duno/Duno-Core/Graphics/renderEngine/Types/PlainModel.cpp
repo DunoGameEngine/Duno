@@ -2,7 +2,8 @@
 
 Duno::Graphics::RenderEngine::Types::PlainModel::PlainModel(int vaoID, int vertex, int vaoLength, bool index) :
 	vaoID(vaoID),
-	vaoLength(vaoLength) {}
+	vaoLength(vaoLength),
+	hasIndexBuffer(index) {}
 
 int Duno::Graphics::RenderEngine::Types::PlainModel::getVaoID()
 {
