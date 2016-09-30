@@ -30,6 +30,15 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	if (action == GLFW_RELEASE)
 		DunoKeyboard::removeKey(key);
 }
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_LEFT)
+		DunoMouse::setClick(action == GLFW_PRESS, 0);
+	else if (button == GLFW_MOUSE_BUTTON_LEFT)
+		DunoMouse::setClick(action == GLFW_PRESS, 1);
+	else if (button == GLFW_MOUSE_BUTTON_LEFT)
+		DunoMouse::setClick(action == GLFW_PRESS, 2);
+}
 void Duno::Graphics::Display::createDisplay(const char * title, int width, int height, int fps, bool useVsync)
 {
 	//set the private members to the value of passed in parameters
@@ -54,7 +63,8 @@ void Duno::Graphics::Display::createDisplay(const char * title, int width, int h
 	}
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetKeyCallback(window, key_callback);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	//enable usage of opengl in the window, set the clear colour
 	glfwMakeContextCurrent(window);
@@ -73,6 +83,11 @@ void Duno::Graphics::Display::updateDisplay()
 	if (glfwWindowShouldClose(window)) {
 		running = false;
 	}
+
+	if (DunoMouse::isDisabled())
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	else
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
 	//swap images
 	glfwSwapBuffers(window);	

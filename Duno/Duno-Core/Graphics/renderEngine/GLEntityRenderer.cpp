@@ -12,15 +12,16 @@ using namespace std;
 #define DIR_LIGHTDIR 4
 #define DIR_LENGTH 5
 
-GLEntityRenderer::GLEntityRenderer(string shaderName)
+GLEntityRenderer::GLEntityRenderer(string shaderName, unsigned int locationExt)
 {
 	GLShader* shader = new GLShader(shaderName);
 	shader->addAtribute("position");
 	shader->addAtribute("texture");
 	shader->addAtribute("normal");
+	shader->addAtribute("tangent");
 	shader->compile();
 
-	shader->allocateLocations(5);
+	shader->allocateLocations(6 + locationExt);
 	shader->setLocation(MVP_MATRIX, "mvp");
 	shader->setLocation(POINT_LIGHTPOS, "point_lightPos");
 	shader->setLocation(POINT_LIGHTCOLOUR, "point_lightColour");
@@ -38,11 +39,11 @@ void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
 	GLTextureLoader::bindTexture(model->getMateral()->getBump(), 1);
 
 	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix() * model->getTransformationMatrix(), MVP_MATRIX);
-	getShader()->loadVectorArray(new glm::vec3[2]{ glm::vec3(sin(test)*10, 4, 0), glm::vec3(-sin(test) * 10, 4, 0) }, 2, POINT_LIGHTPOS);
-	getShader()->loadVectorArray(new glm::vec3[2]{ glm::vec3(0,0,1), glm::vec3(0,1,0) }, 2, POINT_LIGHTCOLOUR);
-	getShader()->loadInt(0, POINT_LENGTH);
+	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(sin(test) * 10, 4, 0) }, 1, POINT_LIGHTPOS);
+	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(1,1,1) }, 1, POINT_LIGHTCOLOUR);
+	getShader()->loadInt(1, POINT_LENGTH);
 	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(0.2,-1,0.2) }, 1, DIR_LIGHTDIR);
-	getShader()->loadInt(1, DIR_LENGTH);
+	getShader()->loadInt(0, DIR_LENGTH);
 	test += GameTimer::getFrameTimeSeconds() * 1.0F;
 	addRenderModel(model, cam);
 }

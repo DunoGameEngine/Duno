@@ -8,7 +8,7 @@ public:
 	DunoCamera(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale):
 		DunoGameObject(NULL, NULL, position, rotation, scale) {}
 	/* Updates a mouse look script for debug */
-	void updateMouseLook(float xSensitivity, float ySensitivity);
+	void updateMouseLook(float xSensitivity, float ySensitivity, bool toggle = true);
 	/* Updates a free flying script for debug */
 	void updateFreeMove(float speed);
 	/* Overides the default tranfromation matrix */

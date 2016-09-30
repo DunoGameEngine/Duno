@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Duno-Core", "Duno-Core\Duno-Core.vcxproj", "{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}"
 EndProject
@@ -12,6 +12,9 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Lib|Any CPU = Lib|Any CPU
+		Lib|x64 = Lib|x64
+		Lib|x86 = Lib|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
@@ -22,6 +25,9 @@ Global
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Debug|x64.Build.0 = Debug|x64
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Debug|x86.ActiveCfg = Debug|Win32
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Debug|x86.Build.0 = Debug|Win32
+		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Lib|Any CPU.ActiveCfg = Lib|Win32
+		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Lib|x64.ActiveCfg = Lib|x64
+		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Lib|x86.ActiveCfg = Lib|Win32
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Release|Any CPU.ActiveCfg = Release|Win32
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Release|x64.ActiveCfg = Release|x64
 		{F09613EA-7DEC-44D2-A7AB-17E1BE301AEA}.Release|x64.Build.0 = Release|x64
@@ -33,6 +39,12 @@ Global
 		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Debug|x64.Build.0 = Debug|Any CPU
 		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Debug|x86.Build.0 = Debug|Any CPU
+		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Lib|Any CPU.ActiveCfg = Lib|Any CPU
+		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Lib|Any CPU.Build.0 = Lib|Any CPU
+		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Lib|x64.ActiveCfg = Lib|Any CPU
+		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Lib|x64.Build.0 = Lib|Any CPU
+		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Lib|x86.ActiveCfg = Lib|Any CPU
+		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Lib|x86.Build.0 = Lib|Any CPU
 		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{81F8AA57-E391-44F9-BC6E-41992C8F1E4A}.Release|x64.ActiveCfg = Release|Any CPU

@@ -11,12 +11,13 @@ using namespace std;
 /* Converts from deg to rad */
 #define TORAD(deg) (float)(deg * M_PI) / 180.0F
 
-void DunoCamera::updateMouseLook(float xSensitivity, float ySensitivity)
+void DunoCamera::updateMouseLook(float xSensitivity, float ySensitivity, bool toggle)
 {
 	glm::vec2 pos = DunoMouse::getMousePosition();
 	glm::vec2 motion = pos - preMousePos;
 	preMousePos = pos;
-	rotaiton += glm::vec3(motion.y*ySensitivity, motion.x*xSensitivity, 0);
+	if (toggle)
+		rotaiton += glm::vec3(motion.y*ySensitivity, motion.x*xSensitivity, 0);
 }
 void DunoCamera::updateFreeMove(float speed)
 {

@@ -24,6 +24,20 @@ Types::PlainModel* GLLoader::load(vector<float> positions, vector<float> texture
 	unbindVAO();
 	return new Types::PlainModel(VAO, 0, indices.size(), true);
 }
+Types::PlainModel* GLLoader::load(vector<float> positions, vector<float> textures, vector<float> normals, vector<unsigned int> indices, vector<float> tangents)
+{
+	//create new VAO
+	int VAO = createVAO();
+
+	bindIndicesBuffer(indices);
+	storeDataInVBO(positions, 3, 0);
+	storeDataInVBO(textures, 2, 1);
+	storeDataInVBO(normals, 3, 2);
+	storeDataInVBO(tangents, 3, 3);
+
+	unbindVAO();
+	return new Types::PlainModel(VAO, 0, indices.size(), true);
+}
 Types::PlainModel* GLLoader::loadSkybox()
 {
 	int VAO = createVAO();
@@ -80,9 +94,10 @@ Types::PlainModel* GLLoader::loadSkybox()
 Types::PlainModel* GLLoader::load(FileType::OBJFile file)
 {
 	ModelInfo* info = file.getInfo();
+	if (info->useTangents)
+		return load(info->positions, info->textures, info->normals, info->indices, info->tangents);
 	return load(info->positions, info->textures, info->normals, info->indices);
 }
-
 
 int GLLoader::createVAO()
 {

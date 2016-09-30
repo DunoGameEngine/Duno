@@ -10,6 +10,7 @@ struct ModelInfo
 	vector<float> textures;
 	vector<float> normals;
 	vector<unsigned int> indices;
+	bool useTangents; vector<float> tangents;
 };
 namespace FileType
 {
@@ -21,7 +22,7 @@ namespace FileType
 		OBJFile() : File("") {}
 		OBJFile(File file, ModelInfo* info) : File(file), info(info) {}
 		/* Converts a normal file to an obj file */
-		static OBJFile load(File& file);
+		static OBJFile load(File& file, bool useTangents = true);
 		~OBJFile() { delete info; }
 
 		/* Returns the models info */

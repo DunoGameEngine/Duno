@@ -13,21 +13,28 @@ using namespace RenderEngine;
 int main() {
 	Display newDisplay;
 	FileSystem::setHome("../Assets/");
+	Logger::init();
+	Logger::setSpace("Loader");
+	Logger::logln("Started Loading");
 
 	GLDunoGame* game = new GLDunoGame();
-	//game->addRenderer(new GLEntityRenderer());
-	game->addRenderer(new GLEntityReflectiveRenderer(game->getTextureLoader()->loadCubeMap(FileSystem::getFile("Textures/Skybox/city/"))));
+	GLTexture* skybox = game->getTextureLoader()->loadCubeMap(FileSystem::getFile("Textures/Skybox/city/"));
+	game->addRenderer(new GLEntityRenderer());
+	game->addRenderer(new GLEntityReflectiveRenderer(skybox));
 	game->addRenderer(new GLSkyBoxRenderer(game->getLoader()));
+	Logger::logln("Loaded Renderers");
 	game->updateProjectionMatrix();
-	game->getRenderer(1)->addModel(new DunoGameObject(game->getLoader()->loadSkybox(), new GLMateral(game->getTextureLoader()->loadCubeMap(FileSystem::getFile("Textures/Skybox/city/"))), glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
+	game->getRenderer(2)->addModel(new DunoGameObject(game->getLoader()->loadSkybox(), new GLMateral(skybox), glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
+	Logger::logln("Loaded Skybox");
 
 	GLTexture* defuse = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick.png")));
-	GLTexture* bump = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick_normal.png")));
+	GLTexture* bump = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick_norm.png")));
 	GLMateral* mat = new GLMateral(defuse, bump);
-	//game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/testModel.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
-	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/bunny.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
-	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/dragon.obj"))), mat, glm::vec3(20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
-	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/test.obj"))), mat, glm::vec3(-20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
+	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/testModel.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
+	//game->getRenderer(1)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/bunny.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
+	//game->getRenderer(1)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/dragon.obj"))), mat, glm::vec3(20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
+	//game->getRenderer(1)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/test.obj"))), mat, glm::vec3(-20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
+	Logger::logln("Loaded Models");
 
 	glfwSwapInterval(0);
 	try { game->startMainGameLoop(); }

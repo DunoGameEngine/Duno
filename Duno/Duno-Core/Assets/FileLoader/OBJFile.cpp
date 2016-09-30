@@ -27,23 +27,28 @@ struct Virtex
 		position(position),
 		textureIndex(-1),
 		normalIndex(-1),
-		dup(NULL) {};
+		dup(NULL),
+		tangent(glm::vec3()) {};
 	bool isSet() { return textureIndex != -1 && normalIndex != -1; }
 	unsigned int index;
 	unsigned int textureIndex;
 	unsigned int normalIndex;
 	glm::vec3 position;
+	glm::vec3 tangent;
 	Virtex* dup;
 };
-void dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, vector<unsigned int>& indecies, vector<Virtex*>& vertices)
+Virtex* dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, vector<unsigned int>& indecies, vector<Virtex*>& vertices)
 {
 	if (preVirtex->textureIndex == t - 1 && preVirtex->normalIndex == n - 1)
+	{
 		indecies.push_back(preVirtex->index);
+		return preVirtex;
+	}
 	else
 	{
 		Virtex* anoutherVirtex = preVirtex->dup;
 		if (anoutherVirtex != NULL)
-			dealWithAlreadyProcessedVertex(anoutherVirtex, v, t, n, indecies, vertices);
+			return dealWithAlreadyProcessedVertex(anoutherVirtex, v, t, n, indecies, vertices);
 		else
 		{
 			Virtex* dupVirtex = new Virtex(vertices.size(), preVirtex->position);
@@ -52,10 +57,11 @@ void dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, vect
 			preVirtex->dup = dupVirtex;
 			vertices.push_back(dupVirtex);
 			indecies.push_back(dupVirtex->index);
+			return dupVirtex;
 		}
 	}
 }
-void prossesVertex(int v, int t, int n, vector<Virtex*>& vertices, vector<unsigned int>& indecies)
+Virtex* prossesVertex(int v, int t, int n, vector<Virtex*>& vertices, vector<unsigned int>& indecies)
 {
 	Virtex* currentVirtex = vertices[v - 1];
 	if (!currentVirtex->isSet())
@@ -63,15 +69,16 @@ void prossesVertex(int v, int t, int n, vector<Virtex*>& vertices, vector<unsign
 		currentVirtex->textureIndex = t - 1;
 		currentVirtex->normalIndex = n - 1;
 		indecies.push_back(v - 1);
+		return currentVirtex;
 	}
 	else
 	{
 		if (currentVirtex != NULL)
-			dealWithAlreadyProcessedVertex(currentVirtex, v, t, n, indecies, vertices);
+			return dealWithAlreadyProcessedVertex(currentVirtex, v, t, n, indecies, vertices);
 	}
 }
 /* Convert File to OBJFile (only temp) */
-FileType::OBJFile FileType::OBJFile::load(File& file)
+FileType::OBJFile FileType::OBJFile::load(File& file, bool useTangents)
 {	
 	Logger::setSpace("OBJLoader");
 	// Some vectors of data
@@ -105,11 +112,21 @@ FileType::OBJFile FileType::OBJFile::load(File& file)
 		}
 		else if (type == "f") /* faces */
 		{
+			Virtex* virt[3];
 			for (unsigned int i = 0; i < 3; i++)
 			{
 				int v, t, n; iss >> v >> t >> n;
-				prossesVertex(v, t, n, vertices, indices);
+				virt[i] = prossesVertex(v, t, n, vertices, indices);
 			}
+			glm::vec2 uv0 = textures[virt[0]->textureIndex];
+			glm::vec2 deltaUv1 = textures[virt[1]->textureIndex] - uv0;
+			glm::vec2 deltaUv2 = textures[virt[2]->textureIndex] - uv0;
+
+			glm::vec3 tangent = (((virt[1]->position - virt[0]->position) * deltaUv2.y) - ((virt[2]->position - virt[0]->position) * deltaUv1.y)) *
+				(1.0F / (deltaUv1.x * deltaUv2.y - deltaUv1.y * deltaUv2.x));
+			virt[0]->tangent = tangent;
+			virt[1]->tangent = tangent;
+			virt[2]->tangent = tangent;
 		}
 		else
 		{
@@ -122,12 +139,17 @@ FileType::OBJFile FileType::OBJFile::load(File& file)
 	vector<float> positionArray = vector<float>(indices.size() * 3);
 	vector<float> textureArray  = vector<float>(indices.size() * 2);
 	vector<float> normalArray   = vector<float>(indices.size() * 3);
+	vector<float> tangentArray = vector<float>(indices.size() * 3);
 	for (unsigned int i = 0; i < vertices.size(); i++)
 	{
 		Virtex* virtex = vertices[i];
 		glm::vec3 position = virtex->position;
 		glm::vec2 texture = textures[virtex->textureIndex];
 		glm::vec3 normal = normals[virtex->normalIndex];
+		glm::vec3 tangent = virtex->tangent;
+		tangentArray[i * 3] = tangent.x;
+		tangentArray[(i * 3) + 1] = tangent.y;
+		tangentArray[(i * 3) + 2] = tangent.z;
 		positionArray[i * 3] = position.x;
 		positionArray[(i * 3) + 1] = position.y;
 		positionArray[(i * 3) + 2] = position.z;
@@ -144,6 +166,8 @@ FileType::OBJFile FileType::OBJFile::load(File& file)
 	info->textures = textureArray;
 	info->normals = normalArray;
 	info->indices = indices;
+	info->useTangents = useTangents;
+	info->tangents = tangentArray;
 	Logger::logln(("Loaded OBJFile " + file.getURL()).c_str());
 	Logger::back();
 	return OBJFile(file, info);

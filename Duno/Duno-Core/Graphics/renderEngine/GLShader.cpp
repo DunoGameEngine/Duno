@@ -1,6 +1,7 @@
 #include "GLShader.h"
 #include "../GameUtil/GLExceptions.h"
 #include "../Assets/FileSystem.h"
+#include "../GameUtil/Logger.h"
 #include <fstream>
 #include <vector>
 #include <iostream>
