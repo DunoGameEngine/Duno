@@ -207,6 +207,8 @@
     <ClInclude Include="GameUtil\GameTimer.h" />
     <ClInclude Include="GameUtil\GLExceptions.h" />
     <ClInclude Include="GameUtil\Logger.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\Level.h" />
     <ClInclude Include="Graphics\Display\Display.h" />
     <ClInclude Include="Graphics\Display\DunoKeyboard.h" />
     <ClInclude Include="Graphics\Display\DunoMouse.h" />
@@ -238,6 +240,7 @@
     <ClCompile Include="GameUtil\Exceptions.cpp" />
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />
     <ClCompile Include="Graphics\Display\DunoKeyboard.cpp" />
     <ClCompile Include="Graphics\Display\DunoMouse.cpp" />

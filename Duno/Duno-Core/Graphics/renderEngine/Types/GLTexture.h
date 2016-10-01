@@ -13,14 +13,14 @@ private:
 };
 
 /* Stores the colection of textures that make up the objects materal */
-class GLMateral
+class GLMaterial
 {
 public:
 	/* Creates a basic mat */
-	GLMateral(GLTexture* defuse) : defuse(defuse), bump(nullptr) {}
+	GLMaterial(GLTexture* defuse) : defuse(defuse), bump(nullptr) {}
 	/* Creates a mat with a bump map */
-	GLMateral(GLTexture* defuse, GLTexture* bump) : defuse(defuse), bump(bump) {}
-	~GLMateral() { delete defuse; if (bump != nullptr) delete bump; }
+	GLMaterial(GLTexture* defuse, GLTexture* bump) : defuse(defuse), bump(bump) {}
+	~GLMaterial() { delete defuse; if (bump != nullptr) delete bump; }
 	/* Getters */
 
 	GLTexture* getDefuse() { return defuse; };

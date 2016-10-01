@@ -120,6 +120,7 @@
     <ClInclude Include="Tools\OBJLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="TEST.cpp" />
     <ClCompile Include="Graphics\Display.cpp" />
   </ItemGroup>

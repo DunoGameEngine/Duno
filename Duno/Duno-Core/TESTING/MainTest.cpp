@@ -24,12 +24,12 @@ int main() {
 	game->addRenderer(new GLSkyBoxRenderer(game->getLoader()));
 	Logger::logln("Loaded Renderers");
 	game->updateProjectionMatrix();
-	game->getRenderer(2)->addModel(new DunoGameObject(game->getLoader()->loadSkybox(), new GLMateral(skybox), glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
+	game->getRenderer(2)->addModel(new DunoGameObject(game->getLoader()->loadSkybox(), new GLMaterial(skybox), glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
 	Logger::logln("Loaded Skybox");
 
 	GLTexture* defuse = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick.png")));
 	GLTexture* bump = game->getTextureLoader()->loadTexture(FileType::ImageFile::load(FileSystem::getFile("Textures/brick_norm.png")));
-	GLMateral* mat = new GLMateral(defuse, bump);
+	GLMaterial* mat = new GLMaterial(defuse, bump);
 	game->getRenderer(0)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/testModel.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
 	//game->getRenderer(1)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/bunny.obj"))), mat, glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1)));
 	//game->getRenderer(1)->addModel(new DunoGameObject(game->getLoader()->load(FileType::OBJFile::load(FileSystem::getFile("Models/dragon.obj"))), mat, glm::vec3(20, 0, 0), glm::vec3(), glm::vec3(1, 1, 1)));
