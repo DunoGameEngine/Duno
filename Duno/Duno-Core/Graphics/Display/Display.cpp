@@ -1,3 +1,4 @@
+#include "..\..\..\Duno2\Graphics\Display.h"
 #include "Display.h"
 #include "DunoMouse.h"
 #include "DunoKeyboard.h"
