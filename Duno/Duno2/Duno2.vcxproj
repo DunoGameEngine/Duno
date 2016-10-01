@@ -117,10 +117,10 @@
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\Level.h" />
     <ClInclude Include="Graphics\Display.h" />
-    <ClInclude Include="TESTING\TestGame.h" />
     <ClInclude Include="Tools\OBJLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TEST.cpp" />
     <ClCompile Include="Graphics\Display.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
