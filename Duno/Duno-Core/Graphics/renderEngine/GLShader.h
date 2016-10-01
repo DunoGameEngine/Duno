@@ -33,7 +33,12 @@ public:
 	/* Loads a matrix to a uniform */
 	void loadMatrix(const glm::mat4& matrix, unsigned int location) { glUniformMatrix4fv(locations[location], 1, false, glm::value_ptr(matrix)); };
 	void loadVector(const glm::vec3& vector, unsigned int location) { glUniform3f(locations[location], vector.x, vector.y, vector.z); };
-	void loadVectorArray(glm::vec3* vectorArray, unsigned int arraySize, unsigned int location) { glUniform3fv(locations[location], arraySize, toArray(vectorArray, arraySize)); }
+	void loadVectorArray(glm::vec3 vectorArray[], unsigned int arraySize, unsigned int location)
+	{ 
+		GLfloat* a = toArray(vectorArray, arraySize);
+		glUniform3fv(locations[location], arraySize, a);
+		delete[] a;
+	}
 	void loadInt(int i, unsigned int location) { glUniform1i(locations[location], i); }
 private:
 	GLuint shaderProgram;

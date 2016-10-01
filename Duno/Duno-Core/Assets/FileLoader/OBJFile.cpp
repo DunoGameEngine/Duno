@@ -37,7 +37,7 @@ struct Virtex
 	glm::vec3 tangent;
 	Virtex* dup;
 };
-Virtex* dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, vector<unsigned int>& indecies, vector<Virtex*>& vertices)
+inline Virtex* dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, vector<unsigned int>& indecies, vector<Virtex*>& vertices)
 {
 	if (preVirtex->textureIndex == t - 1 && preVirtex->normalIndex == n - 1)
 	{
@@ -61,7 +61,7 @@ Virtex* dealWithAlreadyProcessedVertex(Virtex* preVirtex, int v, int t, int n, v
 		}
 	}
 }
-Virtex* prossesVertex(int v, int t, int n, vector<Virtex*>& vertices, vector<unsigned int>& indecies)
+inline Virtex* prossesVertex(int v, int t, int n, vector<Virtex*>& vertices, vector<unsigned int>& indecies)
 {
 	Virtex* currentVirtex = vertices[v - 1];
 	if (!currentVirtex->isSet())
@@ -112,27 +112,42 @@ FileType::OBJFile FileType::OBJFile::load(File& file, bool useTangents)
 		}
 		else if (type == "f") /* faces */
 		{
-			Virtex* virt[3];
-			for (unsigned int i = 0; i < 3; i++)
-			{
-				int v, t, n; iss >> v >> t >> n;
-				virt[i] = prossesVertex(v, t, n, vertices, indices);
-			}
-			glm::vec2 uv0 = textures[virt[0]->textureIndex];
-			glm::vec2 deltaUv1 = textures[virt[1]->textureIndex] - uv0;
-			glm::vec2 deltaUv2 = textures[virt[2]->textureIndex] - uv0;
-
-			glm::vec3 tangent = (((virt[1]->position - virt[0]->position) * deltaUv2.y) - ((virt[2]->position - virt[0]->position) * deltaUv1.y)) *
-				(1.0F / (deltaUv1.x * deltaUv2.y - deltaUv1.y * deltaUv2.x));
-			virt[0]->tangent = tangent;
-			virt[1]->tangent = tangent;
-			virt[2]->tangent = tangent;
+			break;
 		}
 		else
 		{
 			if (!(type == "s" || type == "o" || type == "#"))
 				throw new WrongFileTypeExcption("OBJFile");
 		}
+	}
+	while (getline(f, line))
+	{
+		istringstream iss(replaceAll(line, "/", " "));
+		string type; iss >> type;
+		Virtex* virt[3];
+		for (unsigned int i = 0; i < 3; i++)
+		{
+			int v, t, n; iss >> v >> t >> n;
+			Virtex* currentVirtex = vertices[v - 1];
+			if (!currentVirtex->isSet())
+			{
+				currentVirtex->textureIndex = t - 1;
+				currentVirtex->normalIndex = n - 1;
+				indices.push_back(v - 1);
+				virt[i] = currentVirtex;
+			}
+			else
+				virt[i] = dealWithAlreadyProcessedVertex(currentVirtex, v, t, n, indices, vertices);
+		}
+		glm::vec2 uv0 = textures[virt[0]->textureIndex];
+		glm::vec2 deltaUv1 = textures[virt[1]->textureIndex] - uv0;
+		glm::vec2 deltaUv2 = textures[virt[2]->textureIndex] - uv0;
+
+		glm::vec3 tangent = (((virt[1]->position - virt[0]->position) * deltaUv2.y) - ((virt[2]->position - virt[0]->position) * deltaUv1.y)) *
+			(1.0F / (deltaUv1.x * deltaUv2.y - deltaUv1.y * deltaUv2.x));
+		virt[0]->tangent = tangent;
+		virt[1]->tangent = tangent;
+		virt[2]->tangent = tangent;
 	}
 
 	/* Convert data to arrays */
