@@ -1,4 +1,4 @@
-#include "..\..\..\Duno2\Graphics\Display.h"
+//#include "..\..\..\Duno2\Graphics\Display.h" - Don't include from an outside project
 #include "Display.h"
 #include "DunoMouse.h"
 #include "DunoKeyboard.h"
