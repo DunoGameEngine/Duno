@@ -16,15 +16,15 @@ namespace Duno2 {
 		Duno2::Graphics::Display m_display;
 
 	public:
-		
+
 		//Execute before the main game loop
-		void onLoad();
+		void onLoadGame();
 
 		//Execute every frame
-		void onUpdate();
+		void onUpdateGame();
 
 		//Execute when the game is about to close
-		void onClose();
+		void onCloseGame();
 
 		//Add a level to the game (make sure the level exists)
 		void addLevel(Level level);

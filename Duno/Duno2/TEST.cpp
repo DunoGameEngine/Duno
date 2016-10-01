@@ -6,7 +6,17 @@ using namespace Graphics;
 
 int main() {
 	
-	Display* window = new Display();
+	Display window = Display();
+	
+	window.createDisplay();
+
+	while (!window.shouldClose) {
+
+		window.updateDisplay();
+
+	}
+
+	window.closeDisplay();
 
 	return 0;
 }
