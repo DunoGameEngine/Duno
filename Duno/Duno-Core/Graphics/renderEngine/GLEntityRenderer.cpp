@@ -39,10 +39,12 @@ void GLEntityRenderer::onRenderModel(DunoGameObject* model, DunoCamera* cam)
 	GLTextureLoader::bindTexture(model->getMateral()->getBump(), 1);
 
 	getShader()->loadMatrix(projectionMatrix * cam->getTransformationMatrix() * model->getTransformationMatrix(), MVP_MATRIX);
-	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(sin(test) * 10, 4, 0) }, 1, POINT_LIGHTPOS);
-	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(1,1,1) }, 1, POINT_LIGHTCOLOUR);
+	glm::vec3 lightPos[1] = { glm::vec3(sin(test) * 10, 4, 0) };
+	glm::vec3 lightColour[1] = { glm::vec3(1, 1, 1) };
+	getShader()->loadVectorArray(lightPos, 1, POINT_LIGHTPOS);
+	getShader()->loadVectorArray(lightColour, 1, POINT_LIGHTCOLOUR);
 	getShader()->loadInt(1, POINT_LENGTH);
-	getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(0.2,-1,0.2) }, 1, DIR_LIGHTDIR);
+	//getShader()->loadVectorArray(new glm::vec3[1]{ glm::vec3(0.2,-1,0.2) }, 1, DIR_LIGHTDIR);
 	getShader()->loadInt(0, DIR_LENGTH);
 	test += GameTimer::getFrameTimeSeconds() * 1.0F;
 	addRenderModel(model, cam);
