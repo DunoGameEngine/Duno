@@ -257,6 +257,7 @@
     <ClCompile Include="TESTING\MainTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="glew32.dll" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
