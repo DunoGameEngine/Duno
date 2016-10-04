@@ -93,9 +93,6 @@
     <ClInclude Include="Assets\FileLoader\OBJFile.h">
       <Filter>Header Files\Assets\FileLoader</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\DunoGameObject.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="GameUtil\GLExceptions.h">
       <Filter>Header Files\GameUtil</Filter>
     </ClInclude>
@@ -107,9 +104,6 @@
     </ClInclude>
     <ClInclude Include="GameUtil\Logger.h">
       <Filter>Header Files\GameUtil</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\Display\Display.h">
-      <Filter>Header Files\Graphics\Display</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLEntityRenderer.h">
       <Filter>Header Files\Graphics\RenderEngine</Filter>
@@ -134,15 +128,6 @@
     </ClInclude>
     <ClInclude Include="OpenGL\GL.h">
       <Filter>Header Files\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject\DunoCamera.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\Display\DunoMouse.h">
-      <Filter>Header Files\Graphics\Display</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics\Display\DunoKeyboard.h">
-      <Filter>Header Files\Graphics\Display</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightManager.h">
       <Filter>Header Files</Filter>
@@ -171,6 +156,21 @@
     <ClInclude Include="Game\Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Input\DunoKeyboard.h">
+      <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\DunoMouse.h">
+      <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Display.h">
+      <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\DunoGameObject.h">
+      <Filter>Header Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\DunoCamera.h">
+      <Filter>Header Files\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Duno_CS.cpp">
@@ -191,9 +191,6 @@
     <ClCompile Include="Assets\FileLoader\OBJFile.cpp">
       <Filter>Source Files\Assets\FileLoader</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\DunoGameObject.cpp">
-      <Filter>Source Files\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="GameUtil\GameTimer.cpp">
       <Filter>Source Files\GameUtil</Filter>
     </ClCompile>
@@ -202,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="GameUtil\Logger.cpp">
       <Filter>Source Files\GameUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\Display\Display.cpp">
-      <Filter>Source Files\Graphics\Display</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLLoader.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
@@ -230,15 +224,6 @@
     <ClCompile Include="TESTING\MainTest.cpp">
       <Filter>Source Files\TESTING</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\DunoCamera.cpp">
-      <Filter>Source Files\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\Display\DunoMouse.cpp">
-      <Filter>Source Files\Graphics\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\Display\DunoKeyboard.cpp">
-      <Filter>Source Files\Graphics\Display</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\renderEngine\Lighting\DunoLightManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -262,6 +247,24 @@
     </ClCompile>
     <ClCompile Include="Game\Game.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\DunoKeyboard.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\DunoMouse.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Display.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\DunoCamera.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\DunoGameObject.cpp">
+      <Filter>Source Files\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

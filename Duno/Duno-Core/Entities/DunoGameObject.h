@@ -14,6 +14,7 @@ public:
 		position(position),
 		rotaiton(rotaiton),
 		scale(scale) {}
+
 	/* Returns the tranformations as a matrix */
 	virtual glm::mat4 getTransformationMatrix();
 
@@ -25,10 +26,20 @@ public:
 
 	GLMaterial* getMateral() { return mat; }
 	bool getIndexBuffer() { return model->getHasIndexBuffer(); }
+
+	//Call when the entity is loaded
+	virtual void OnLoadEntity();
+
+	virtual void OnUpdateEntity();
+
+	virtual void OnCloseEntity();
+
 protected:
+
 	/* Display Data */
 	PlainModel* model;
 	GLMaterial* mat;
+
 	/* Transformation Data */
 	glm::vec3 position;
 	glm::vec3 rotaiton;
