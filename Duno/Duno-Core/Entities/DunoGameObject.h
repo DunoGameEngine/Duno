@@ -4,6 +4,7 @@
 #include <glm\glm.hpp>
 using namespace Duno::Graphics::RenderEngine::Types;
 
+namespace Duno{namespace Types{
 /* Stores the default data for all objects that are in the scene */
 class DunoGameObject
 {
@@ -45,3 +46,4 @@ protected:
 	glm::vec3 rotaiton;
 	glm::vec3 scale;
 };
+}}
