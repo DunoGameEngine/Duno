@@ -1,7 +1,6 @@
 #pragma once
 #include <stdio.h>
 #include <list>
-
 #include "../Graphics/Display.h"
 #include "Level.h"
 

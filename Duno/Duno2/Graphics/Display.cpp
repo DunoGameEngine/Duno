@@ -1,7 +1,6 @@
 #include "Display.h"
 
 
-
 void Duno2::Graphics::Display::createDisplay(int width, int height,const char* title) {
 
 
@@ -21,6 +20,8 @@ void Duno2::Graphics::Display::createDisplay(int width, int height,const char* t
 		std::cout << "GLFW window was not created correctly" << std::endl;
 		
 	}
+
+	glClearColor(0.25, 0.5, 0.0,1);
 
 }
 

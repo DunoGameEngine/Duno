@@ -1,4 +1,6 @@
 #pragma once
+
+#include <GL/glew.h>
 #include <GLFW\glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -17,7 +19,6 @@ namespace Duno2{namespace Graphics{
 
 
 	public:
-
 		//Declare true if the window should close
 		bool shouldClose = false;
 
