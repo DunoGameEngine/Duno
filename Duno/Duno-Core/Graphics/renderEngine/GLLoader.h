@@ -40,6 +40,7 @@ namespace Duno{namespace Graphics{namespace RenderEngine{
 		Types::PlainModel* load(vector<float> positions, vector<float> textures, vector<float> normals, vector<unsigned int> indices);
 		Types::PlainModel* load(vector<float> positions, vector<float> textures, vector<float> normals, vector<unsigned int> indices, vector<float> tangents);
 		Types::PlainModel* loadSkybox();
+		Types::PlainModel* loadQuad();
 
 		Types::PlainModel* load(FileType::OBJFile file);
 

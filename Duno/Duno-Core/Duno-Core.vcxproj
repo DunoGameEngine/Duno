@@ -198,6 +198,7 @@
     <ClInclude Include="Assets\FileLoader\ImageFile.h" />
     <ClInclude Include="Assets\FileLoader\OBJFile.h" />
     <ClInclude Include="Assets\FileLoader\stb_image.h" />
+    <ClInclude Include="Assets\FileLoader\XMLFile.h" />
     <ClInclude Include="Assets\FileSystem.h" />
     <ClInclude Include="DunoGame.h" />
     <ClInclude Include="Duno_CS.h" />
@@ -230,6 +231,7 @@
     <ClCompile Include="Assets\FileLoader\ImageFile.cpp" />
     <ClCompile Include="Assets\FileLoader\OBJFile.cpp" />
     <ClCompile Include="Assets\FileLoader\stb_image.cpp" />
+    <ClCompile Include="Assets\FileLoader\XMLFile.cpp" />
     <ClCompile Include="Assets\FileSystem.cpp" />
     <ClCompile Include="DunoGame.cpp" />
     <ClCompile Include="Duno_CS.cpp" />
@@ -239,6 +241,7 @@
     <ClCompile Include="GameUtil\GameTimer.cpp" />
     <ClCompile Include="GameUtil\Logger.cpp" />
     <ClCompile Include="Graphics\Display\Display.cpp" />
+    <ClCompile Include="Graphics\Display\DunoDisplayInfo.cpp" />
     <ClCompile Include="Graphics\Display\DunoKeyboard.cpp" />
     <ClCompile Include="Graphics\Display\DunoMouse.cpp" />
     <ClCompile Include="Graphics\renderEngine\GLEntityReflectiveRenderer.cpp" />

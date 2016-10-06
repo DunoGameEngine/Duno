@@ -16,7 +16,7 @@ public:
 	/* Adds an object to the list to be rendered */
 	void addModel(DunoGameObject* model) { models.push_back(model); }
 	/* Sets the current projection matrix */
-	void setProjectionMatrix(const glm::mat4& matrix) { projectionMatrix = matrix; }
+	virtual void setProjectionMatrix(const glm::mat4& matrix) { projectionMatrix = matrix; }
 	~GLRenderer() { delete shader; }
 protected:
 	/* Gets called when the scene is rendered */

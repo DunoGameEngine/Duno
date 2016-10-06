@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <fstream>
 using namespace std;
 
 namespace FileType
@@ -16,6 +17,8 @@ namespace FileType
 		/* Getters */
 		string getURL() { return url_; }
 		string getData() { return data_; };
+		bool isLoaded() { return !data_.empty(); }
+		bool doesExist() { ifstream f(url_); bool b = f.good(); f.close(); return b; }
 	private:
 		/* URL of the file */
 		string url_;

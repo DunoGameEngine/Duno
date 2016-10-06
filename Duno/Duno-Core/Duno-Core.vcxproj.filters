@@ -165,6 +165,9 @@
     <ClInclude Include="Graphics\renderEngine\GLEntityReflectiveRenderer.h">
       <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Assets\FileLoader\XMLFile.h">
+      <Filter>Header Files\Assets\FileLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Duno_CS.cpp">
@@ -253,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLEntityReflectiveRenderer.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Assets\FileLoader\XMLFile.cpp">
+      <Filter>Source Files\Assets\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Display\DunoDisplayInfo.cpp">
+      <Filter>Source Files\Graphics\Display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

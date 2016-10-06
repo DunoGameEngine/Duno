@@ -2,6 +2,7 @@
 #include "Display.h"
 #include "DunoMouse.h"
 #include "DunoKeyboard.h"
+#include "DunoDisplayInfo.h"
 
 Duno::Graphics::Display::Display()
 {
@@ -40,6 +41,10 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 	else if (button == GLFW_MOUSE_BUTTON_LEFT)
 		DunoMouse::setClick(action == GLFW_PRESS, 2);
 }
+void window_size_callback(GLFWwindow* window, int width, int height)
+{
+	DunoDisplayInfo::setSize(width, height);
+}
 void Duno::Graphics::Display::createDisplay(const char * title, int width, int height, int fps, bool useVsync)
 {
 	//set the private members to the value of passed in parameters
@@ -48,6 +53,7 @@ void Duno::Graphics::Display::createDisplay(const char * title, int width, int h
 	m_height		= height;
 	m_fps			= fps;
 	m_useVsync		= useVsync;
+	DunoDisplayInfo::setSize(width, height);
 
 	//initialize glfw
 	if (!glfwInit()) {
@@ -65,6 +71,7 @@ void Duno::Graphics::Display::createDisplay(const char * title, int width, int h
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
+	glfwSetWindowSizeCallback(window, window_size_callback);
 	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	//enable usage of opengl in the window, set the clear colour

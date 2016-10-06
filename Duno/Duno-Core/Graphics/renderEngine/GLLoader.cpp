@@ -90,6 +90,23 @@ Types::PlainModel* GLLoader::loadSkybox()
 	unbindVAO();
 	return new Types::PlainModel(VAO, 0, positionsVector.size(), false);
 }
+Types::PlainModel* GLLoader::loadQuad()
+{
+	int VAO = createVAO();
+	float size = 1.0F;
+	float positions[] = {
+		-size, -size,
+		size, -size,
+		size, size,
+		-size, size,
+		-size, -size,
+		size, size,
+	};
+	vector<float> positionsVector = vector<float>(begin(positions), end(positions));
+	storeDataInVBO(positionsVector, 2, 0);
+	unbindVAO();
+	return new Types::PlainModel(VAO, 0, positionsVector.size(), false);
+}
 
 Types::PlainModel* GLLoader::load(FileType::OBJFile file)
 {

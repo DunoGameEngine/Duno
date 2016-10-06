@@ -1,6 +1,7 @@
 #include "DunoGame.h"
 #include "GameUtil/GameTimer.h"
 #include "Graphics\Display\DunoMouse.h"
+#include "Graphics\Display\DunoDisplayInfo.h"
 
 DunoGame::DunoGame(const char* name)
 {
@@ -39,6 +40,12 @@ void GLDunoGame::onRender()
 	mainCamera->updateMouseLook(0.2F, 0.2F, DunoMouse::isLeftMouseDown());
 	mainCamera->updateFreeMove(10.0F);
 	renderer->renderScene();
+
+	if (DunoDisplayInfo::hasResized())
+	{
+		renderer->updateProjectionMatrix();
+		glViewport(0, 0, DunoDisplayInfo::getWidth(), DunoDisplayInfo::getHeight());
+	}
 }
 void GLDunoGame::onCleanUp()
 {
