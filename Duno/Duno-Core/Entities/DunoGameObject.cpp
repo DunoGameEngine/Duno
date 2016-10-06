@@ -1,6 +1,7 @@
 #include "DunoGameObject.h"
 #include <glm\gtc\matrix_transform.hpp>
 #include<cmath>
+using namespace Duno::Types;
 
 /* Defines PI */
 #define M_PI 3.14159265358979323846

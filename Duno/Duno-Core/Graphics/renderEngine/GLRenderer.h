@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
-#include "../GameObject/DunoCamera.h"
+#include "../Entities/DunoCamera.h"
 #include "../GameUtil/Logger.h"
 #include "GLShader.h"
 using namespace std;
-using namespace Duno::Graphics::RenderEngine;
+using namespace Duno::Types;
 
 /* The renderer base class */
 class GLRenderer

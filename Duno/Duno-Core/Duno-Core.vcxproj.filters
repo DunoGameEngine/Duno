@@ -174,6 +174,9 @@
     <ClInclude Include="Assets\FileLoader\XMLFile.h">
       <Filter>Header Files\Assets\FileLoader</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\Display\DunoDisplayInfo.h">
+      <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Duno_CS.cpp">

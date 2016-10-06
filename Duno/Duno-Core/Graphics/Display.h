@@ -14,14 +14,14 @@ namespace Duno {namespace Graphics {
 			//const long m_ScreenWidth = GetSystemMetrics(SM_CXSCREEN);
 			//const long m_ScreenHeight = GetSystemMetrics(SM_CYSCREEN);
 
-			//decribe properties of the window
+			//describe properties of the window
 			const char* m_title;
 			int m_width;
 			int m_height;
 			int m_fps;
 			bool m_useVsync;	
 
-			//create a new glfw window and assing it to null
+			//create a new glfw window and assign it to null
 			GLFWwindow* window = NULL;
 
 		public:

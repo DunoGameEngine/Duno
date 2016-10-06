@@ -1,36 +1,38 @@
 #pragma once
 #include "DunoGameObject.h"
 
-/* A camra that will set the view the scene will be rendered to */
-class DunoCamera : public DunoGameObject
-{
-public:
+namespace Duno {namespace Types {
+		/* A camera that will set the view the scene will be rendered to */
+		class DunoCamera : public DunoGameObject
+		{
+		public:
 
-	DunoCamera(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale):
-		DunoGameObject(NULL, NULL, position, rotation, scale) {}
+			DunoCamera(vec3 position, vec3 rotation, vec3 scale) :
+				DunoGameObject(NULL, NULL, position, rotation, scale) {}
 
-	/* Updates a mouse look script for debug */
-	void updateMouseLook(float xSensitivity, float ySensitivity, bool toggle = true);
+			/* Updates a mouse look script for debug */
+			void updateMouseLook(float xSensitivity, float ySensitivity, bool toggle = true);
 
-	/* Updates a free flying script for debug */
-	void updateFreeMove(float speed);
+			/* Updates a free flying script for debug */
+			void updateFreeMove(float speed);
 
-	/* Overides the default tranfromation matrix */
-	virtual glm::mat4 getTransformationMatrix();
+			/* Overrides the default transformation matrix */
+			virtual mat4 getTransformationMatrix();
 
-	/* Returns the cameras position */
-	glm::vec3 getPosition() { return position; }
+			/* Returns the cameras position */
+			vec3 getPosition() { return position; }
 
-	//Set position of the camera
-	void setPosition(glm::vec3 pos) { position = pos; }
+			//Set position of the camera
+			void setPosition(vec3 pos) { position = pos; }
 
-	//Return the rotation of the camera
-	glm::vec3 getRotation() { return rotaiton; };
+			//Return the rotation of the camera
+			vec3 getRotation() { return rotaiton; };
 
-	//Change rotation of the camera
-	void setRoation(glm::vec3 rot) { rotaiton = rot; }
+			//Change rotation of the camera
+			void setRoation(vec3 rot) { rotaiton = rot; }
 
-private:
-	/* Stores the last mouse position to calculate motion */
-	glm::vec2 preMousePos;
-};
+		private:
+			/* Stores the last mouse position to calculate motion */
+			vec2 preMousePos;
+		};
+}}

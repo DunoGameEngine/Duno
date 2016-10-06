@@ -1,10 +1,12 @@
 #include "DunoGame.h"
 #include "GameUtil/GameTimer.h"
-#include "Graphics\Display\DunoMouse.h"
+#include "Input\DunoMouse.h"
 #include "Graphics\Display\DunoDisplayInfo.h"
+using namespace Duno::Graphics;
 
 DunoGame::DunoGame(const char* name)
 {
+	
 	display = new Display();
 	display->createDisplay(name);
 	mainCamera = new DunoCamera(glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1));

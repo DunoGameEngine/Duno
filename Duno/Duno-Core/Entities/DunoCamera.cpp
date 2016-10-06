@@ -1,10 +1,11 @@
 #include "DunoCamera.h"
-#include "../Graphics/Display/DunoMouse.h"
-#include "../Graphics/Display/DunoKeyboard.h"
+#include "../Input/DunoMouse.h"
+#include "../Input/DunoKeyboard.h"
 #include "../GameUtil/GameTimer.h"
 #include <glm\gtc\matrix_transform.hpp>
 #include <iostream>
 using namespace std;
+using namespace Duno::Types;
 
 /* Defines PI */
 #define M_PI 3.14159265358979323846
@@ -23,7 +24,7 @@ void DunoCamera::updateFreeMove(float speed)
 {
 	float rot = rotaiton.y;
 
-	//Camera speed will move independantly of how fast the processor is
+	//Camera speed will move independently of how fast the processor is
 	float gameSpeed = GameTimer::getFrameTimeSeconds() * speed;
 	float x = sin(TORAD(rot)) * gameSpeed;
 	float z = cos(TORAD(rot)) * gameSpeed;

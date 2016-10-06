@@ -1,6 +1,7 @@
 #pragma once
 #include "GLRenderer.h"
 #include "GLLoader.h"
+using namespace Duno::Graphics::RenderEngine;
 
 class GLSkyBoxRenderer : public GLRenderer
 {

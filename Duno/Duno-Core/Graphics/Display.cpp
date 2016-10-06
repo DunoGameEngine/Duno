@@ -1,8 +1,8 @@
 //#include "..\..\..\Duno2\Graphics\Display.h" - Don't include from an outside project
 #include "Display.h"
-#include "DunoMouse.h"
-#include "DunoKeyboard.h"
-#include "DunoDisplayInfo.h"
+#include "../Input/DunoMouse.h"
+#include "../Input/DunoKeyboard.h"
+#include "Display/DunoDisplayInfo.h"
 
 Duno::Graphics::Display::Display()
 {
@@ -61,7 +61,7 @@ void Duno::Graphics::Display::createDisplay(const char * title, int width, int h
 		running = false;
 	}
 
-	//create in glfw window, if it didn't happen then erminate glfw
+	//create in glfw window, if it didn't happen then terminate glfw
 	window = glfwCreateWindow(m_width, m_height, m_title, NULL, NULL);
 	if (!window)
 	{

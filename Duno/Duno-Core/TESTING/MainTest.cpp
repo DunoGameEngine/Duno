@@ -2,7 +2,7 @@
 #include "../GameUtil/Logger.h"
 #include "../Assets/FileLoader/OBJFile.h"
 #include "../GameUtil/Exceptions.h"
-#include "../Graphics/Display/DunoMouse.h"
+#include "../Input/DunoMouse.h"
 #include "../Graphics/renderEngine/GLSkyBoxRenderer.h"
 #include "../Graphics/renderEngine/GLEntityReflectiveRenderer.h"
 #include <Windows.h>

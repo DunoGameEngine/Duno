@@ -2,6 +2,7 @@
 #include <list>
 
 #include "../Entities/DunoGameObject.h"
+using namespace Duno::Types;
 
 namespace Duno {
 

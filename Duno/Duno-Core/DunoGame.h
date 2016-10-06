@@ -3,10 +3,11 @@
 #include "Graphics/renderEngine/GLTextureLoader.h"
 #include "Graphics/renderEngine/GLMainRenderer.h"
 #include "Graphics/renderEngine/GLEntityRenderer.h"
-#include "Graphics/Display/Display.h"
+#include "Graphics/Display.h"
+using namespace Duno::Graphics::RenderEngine;
 using namespace Duno::Graphics;
 
-/* A standered duno game setup, no rendering */
+/* A standard duno game setup, no rendering */
 class DunoGame
 {
 public:
@@ -15,7 +16,7 @@ public:
 	void startMainGameLoop();
 	~DunoGame();
 protected:
-	/* Called on each fram */
+	/* Called on each from */
 	virtual void onRender() {};
 	/* Called when the game has been deleted */
 	virtual void onCleanUp() {};
