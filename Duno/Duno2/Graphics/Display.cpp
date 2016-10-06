@@ -1,9 +1,8 @@
 #include "Display.h"
 
-using namespace Duno2;
-using namespace Graphics;
 
-void Display::createDisplay(int width, int height,const char* title) {
+void Duno2::Graphics::Display::createDisplay(int width, int height,const char* title) {
+
 
 	//Initialize GLFW library
 	if (!glfwInit())
@@ -22,10 +21,15 @@ void Display::createDisplay(int width, int height,const char* title) {
 		
 	}
 
+	glClearColor(0.25, 0.5, 0.0,1);
+
 }
 
 
-void Display::updateDisplay() {
+void Duno2::Graphics::Display::updateDisplay() {
+
+	if (glfwWindowShouldClose(m_window))
+		shouldClose = true;
 
 	//Poll events
 	glfwPollEvents();
@@ -35,7 +39,7 @@ void Display::updateDisplay() {
 
 }
 
-void Display::closeDisplay() {
+void Duno2::Graphics::Display::closeDisplay() {
 
 	glfwTerminate();
 

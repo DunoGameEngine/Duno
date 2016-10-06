@@ -5,19 +5,31 @@
 class DunoCamera : public DunoGameObject
 {
 public:
+
 	DunoCamera(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale):
 		DunoGameObject(NULL, NULL, position, rotation, scale) {}
+
 	/* Updates a mouse look script for debug */
 	void updateMouseLook(float xSensitivity, float ySensitivity, bool toggle = true);
+
 	/* Updates a free flying script for debug */
 	void updateFreeMove(float speed);
+
 	/* Overides the default tranfromation matrix */
 	virtual glm::mat4 getTransformationMatrix();
+
 	/* Returns the cameras position */
 	glm::vec3 getPosition() { return position; }
+
+	//Set position of the camera
 	void setPosition(glm::vec3 pos) { position = pos; }
+
+	//Return the rotation of the camera
 	glm::vec3 getRotation() { return rotaiton; };
+
+	//Change rotation of the camera
 	void setRoation(glm::vec3 rot) { rotaiton = rot; }
+
 private:
 	/* Stores the last mouse position to calculate motion */
 	glm::vec2 preMousePos;

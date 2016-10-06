@@ -23,6 +23,7 @@ void DunoCamera::updateFreeMove(float speed)
 {
 	float rot = rotaiton.y;
 
+	//Camera speed will move independantly of how fast the processor is
 	float gameSpeed = GameTimer::getFrameTimeSeconds() * speed;
 	float x = sin(TORAD(rot)) * gameSpeed;
 	float z = cos(TORAD(rot)) * gameSpeed;
