@@ -187,11 +187,14 @@
       <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>.\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Assets\AssetManeger.h" />
@@ -212,6 +215,9 @@
     <ClInclude Include="Game\Level.h" />
     <ClInclude Include="Graphics\Display.h" />
     <ClInclude Include="Graphics\Display\DunoDisplayInfo.h" />
+    <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightType.h" />
+    <ClInclude Include="Graphics\renderEngine\Types\Material\GLBasicMateralTypes.h" />
+    <ClInclude Include="Graphics\renderEngine\Types\Material\GLMaterial.h" />
     <ClInclude Include="Input\DunoKeyboard.h" />
     <ClInclude Include="Input\DunoMouse.h" />
     <ClInclude Include="Graphics\renderEngine\GLEntityReflectiveRenderer.h" />
@@ -228,6 +234,7 @@
     <ClInclude Include="Graphics\renderEngine\Types\GLTexture.h" />
     <ClInclude Include="Graphics\renderEngine\Types\PlainModel.h" />
     <ClInclude Include="OpenGL\GL.h" />
+    <ClInclude Include="Todo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Assets\AssetManeger.cpp" />

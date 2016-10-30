@@ -6,11 +6,12 @@ using namespace Duno::Graphics;
 
 DunoGame::DunoGame(const char* name)
 {
-	
 	display = new Display();
 	display->createDisplay(name);
 	mainCamera = new DunoCamera(glm::vec3(), glm::vec3(), glm::vec3(1, 1, 1));
 }
+
+
 void DunoGame::startMainGameLoop()
 {
 	glEnable(GL_DEPTH_TEST);
@@ -24,6 +25,7 @@ void DunoGame::startMainGameLoop()
 		GameTimer::update();
 	}
 }
+
 DunoGame::~DunoGame()
 {
 	onCleanUp();

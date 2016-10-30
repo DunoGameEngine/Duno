@@ -1,7 +1,7 @@
 #pragma once
 #include <glm\glm.hpp>
 
-/* Handles mouse input ane motion */
+/* Handles Mouse Input and Motion */
 class DunoMouse
 {
 public:

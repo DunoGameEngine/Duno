@@ -22,13 +22,13 @@ namespace Duno {namespace Types {
 			/* Returns the cameras position */
 			vec3 getPosition() { return position; }
 
-			//Set position of the camera
+			/* Set position of the camera */
 			void setPosition(vec3 pos) { position = pos; }
 
-			//Return the rotation of the camera
+			/* Return the rotation of the camera */
 			vec3 getRotation() { return rotaiton; };
 
-			//Change rotation of the camera
+			/* Change rotation of the camera */
 			void setRoation(vec3 rot) { rotaiton = rot; }
 
 		private:

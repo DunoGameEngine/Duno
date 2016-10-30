@@ -1,6 +1,7 @@
 #pragma once
 #include "../Graphics/renderEngine/Types/PlainModel.h"
 #include "../Graphics/renderEngine/Types/GLTexture.h"
+#include "../Graphics/renderEngine/Types/Material/GLMaterial.h"
 #include <glm\glm.hpp>
 using namespace Duno::Graphics::RenderEngine::Types;
 using namespace glm;
@@ -36,6 +37,10 @@ namespace Duno{namespace Types{
 		virtual void OnUpdateEntity() {};
 
 		virtual void OnCloseEntity() {};
+
+		glm::vec3 getPosition() { return position; }
+		void setPosition(glm::vec3 pos) { position = pos; }
+		void setMaterial(GLMaterial* m) { mat = m; }
 
 	protected:
 

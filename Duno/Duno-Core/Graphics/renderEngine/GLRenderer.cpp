@@ -5,8 +5,8 @@ using namespace std;
 
 void GLRenderer::render(vector<DunoGameObject*> models, DunoCamera* cam)
 {
+	m_shader->bind();
 	onRenderAll(cam);
-	shader->bind();
 	for (DunoGameObject* object : models)
 	{
 		glBindVertexArray(object->getModelID());
@@ -17,5 +17,14 @@ void GLRenderer::render(vector<DunoGameObject*> models, DunoCamera* cam)
 			glDrawArrays(GL_TRIANGLES, 0, object->getModelLegnth());
 	}
 	glBindVertexArray(0);
-	shader->unbind();
+	m_shader->unbind();
+}
+
+/* Update Lighting Data */
+void GLRenderer::updateLights(DunoLightManager* light_manager)
+{
+	/* Bind the shader as it will always use it */
+	m_shader->bind();
+	onUpdateLights(light_manager);
+	m_shader->unbind();
 }

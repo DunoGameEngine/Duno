@@ -1,9 +1,16 @@
 #pragma once
-#include <stdio.h>
-#include <list>
-#include "Types\PlainModel.h"
 #include "../Assets/FileLoader/OBJFile.h"
 #include "../OpenGL/GL.h"
+#include "Types\PlainModel.h"
+#include <stdio.h>
+#include <list>
+
+/*                                      */
+/*                                      */
+/*            TO BE CLEANED             */
+/*                                      */
+/*                                      */
+
 namespace Duno{namespace Graphics{namespace RenderEngine{
 
 	class GLLoader {
@@ -40,7 +47,7 @@ namespace Duno{namespace Graphics{namespace RenderEngine{
 		Types::PlainModel* load(vector<float> positions, vector<float> textures, vector<float> normals, vector<unsigned int> indices);
 		Types::PlainModel* load(vector<float> positions, vector<float> textures, vector<float> normals, vector<unsigned int> indices, vector<float> tangents);
 		Types::PlainModel* loadSkybox();
-		Types::PlainModel* loadQuad();
+		Types::PlainModel* loadQuad(float size, float textureScale);
 
 		Types::PlainModel* load(FileType::OBJFile file);
 

@@ -1,5 +1,12 @@
 #include "GLLoader.h"
+#include <glm/glm.hpp>
 using namespace Duno::Graphics::RenderEngine;
+
+/*                                      */
+/*                                      */
+/*            TO BE CLEANED             */
+/*                                      */
+/*                                      */
 
 GLLoader::GLLoader()
 {
@@ -22,7 +29,7 @@ Types::PlainModel* GLLoader::load(vector<float> positions, vector<float> texture
 	storeDataInVBO(normals, 3, 2);
 
 	unbindVAO();
-	return new Types::PlainModel(VAO, 0, indices.size(), true);
+	return new Types::PlainModel(VAO, 0, (unsigned int)indices.size(), true);
 }
 Types::PlainModel* GLLoader::load(vector<float> positions, vector<float> textures, vector<float> normals, vector<unsigned int> indices, vector<float> tangents)
 {
@@ -36,7 +43,7 @@ Types::PlainModel* GLLoader::load(vector<float> positions, vector<float> texture
 	storeDataInVBO(tangents, 3, 3);
 
 	unbindVAO();
-	return new Types::PlainModel(VAO, 0, indices.size(), true);
+	return new Types::PlainModel(VAO, 0, (unsigned int)indices.size(), true);
 }
 Types::PlainModel* GLLoader::loadSkybox()
 {
@@ -88,24 +95,85 @@ Types::PlainModel* GLLoader::loadSkybox()
 	vector<float> positionsVector = vector<float>(begin(positions), end(positions));
 	storeDataInVBO(positionsVector, 3, 0);
 	unbindVAO();
-	return new Types::PlainModel(VAO, 0, positionsVector.size(), false);
+	return new Types::PlainModel(VAO, 0, (unsigned int)positionsVector.size(), false);
 }
-Types::PlainModel* GLLoader::loadQuad()
+Types::PlainModel* GLLoader::loadQuad(float size, float textureScale)
 {
 	int VAO = createVAO();
-	float size = 1.0F;
+	float texture = size * textureScale;
 	float positions[] = {
-		-size, -size,
-		size, -size,
-		size, size,
-		-size, size,
-		-size, -size,
-		size, size,
+		-size, 0, -size,
+		-size, 0,  size,
+		size, 0, -size,
+		size, 0, -size,
+		-size, 0, size,
+		size, 0,  size
 	};
+	float textures[] = {
+		-texture, -texture,
+		-texture, texture,
+		texture, -texture,
+		texture, -texture,
+		-texture, texture,
+		texture, texture
+	};
+	float normals[] = {
+		0, 1, 0,
+		0, 1, 0,
+		0, 1, 0,
+		0, 1, 0,
+		0, 1, 0,
+		0, 1, 0
+	};
+	float tangents[18];
+
+	{
+		glm::vec2 uv0 = glm::vec2(-size, -size);
+		glm::vec2 deltaUv1 = glm::vec2(-size, size) - uv0;
+		glm::vec2 deltaUv2 = glm::vec2(size, -size) - uv0;
+		glm::vec3 tangent = (((glm::vec3(-size, 0, size) - glm::vec3(-size, 0, -size)) * deltaUv2.y) - ((glm::vec3(size, 0, -size) - glm::vec3(-size, 0, -size)) * deltaUv1.y)) *
+			(1.0F / (deltaUv1.x * deltaUv2.y - deltaUv1.y * deltaUv2.x));
+		tangents[0] = tangent.x;
+		tangents[1] = tangent.y;
+		tangents[2] = tangent.z;
+
+		tangents[3] = tangent.x;
+		tangents[4] = tangent.y;
+		tangents[5] = tangent.z;
+
+		tangents[6] = tangent.x;
+		tangents[7] = tangent.y;
+		tangents[8] = tangent.z;
+	}
+	{
+		glm::vec2 uv0 = glm::vec2(size, -size);
+		glm::vec2 deltaUv1 = glm::vec2(-size, size) - uv0;
+		glm::vec2 deltaUv2 = glm::vec2(size, size) - uv0;
+		glm::vec3 tangent = (((glm::vec3(-size, 0, size) - glm::vec3(size, 0, -size)) * deltaUv2.y) - ((glm::vec3(size, 0, size) - glm::vec3(size, 0, -size)) * deltaUv1.y)) *
+			(1.0F / (deltaUv1.x * deltaUv2.y - deltaUv1.y * deltaUv2.x));
+		tangents[9] = tangent.x;
+		tangents[10] = tangent.y;
+		tangents[11] = tangent.z;
+
+		tangents[12] = tangent.x;
+		tangents[13] = tangent.y;
+		tangents[14] = tangent.z;
+
+		tangents[15] = tangent.x;
+		tangents[16] = tangent.y;
+		tangents[17] = tangent.z;
+	}
+
 	vector<float> positionsVector = vector<float>(begin(positions), end(positions));
-	storeDataInVBO(positionsVector, 2, 0);
+	vector<float> texturesVector = vector<float>(begin(textures), end(textures));
+	vector<float> normalsVector = vector<float>(begin(normals), end(normals));
+	vector<float> tangentsVector = vector<float>(begin(tangents), end(tangents));
+	storeDataInVBO(positionsVector, 3, 0);
+	storeDataInVBO(texturesVector, 2, 1);
+	storeDataInVBO(normalsVector, 3, 2);
+	storeDataInVBO(tangentsVector, 3, 3);
 	unbindVAO();
-	return new Types::PlainModel(VAO, 0, positionsVector.size(), false);
+	return new Types::PlainModel(VAO, 0, (unsigned int)positionsVector.size(), false);
 }
 
 Types::PlainModel* GLLoader::load(FileType::OBJFile file)

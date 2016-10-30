@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include "../OpenGL/GL.h"
 #include <GLFW\glfw3.h>
-#pragma comment(lib, "opengl32.lib")
-
 
 namespace Duno {namespace Graphics {
 

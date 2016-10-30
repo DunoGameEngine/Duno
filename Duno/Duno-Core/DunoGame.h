@@ -4,6 +4,7 @@
 #include "Graphics/renderEngine/GLMainRenderer.h"
 #include "Graphics/renderEngine/GLEntityRenderer.h"
 #include "Graphics/Display.h"
+#include "GameUtil/GameTimer.h"
 using namespace Duno::Graphics::RenderEngine;
 using namespace Duno::Graphics;
 
@@ -12,12 +13,15 @@ class DunoGame
 {
 public:
 	DunoGame(const char* name);
+
 	/* Starts the main game loop */
 	void startMainGameLoop();
+
 	~DunoGame();
 protected:
 	/* Called on each from */
 	virtual void onRender() {};
+
 	/* Called when the game has been deleted */
 	virtual void onCleanUp() {};
 
@@ -33,10 +37,16 @@ public:
 	GLDunoGame();
 	/* Returns a renderer at index */
 	GLRenderer* getRenderer(unsigned int index) { return renderer->getRenderer(index); };
+
 	/* Adds a renderer to render to the scene */
 	void addRenderer(GLRenderer* renderer) { this->renderer->addRenderer(renderer); }
+
 	/* Updates the renderers projection matrix */
 	void updateProjectionMatrix() { renderer->updateProjectionMatrix(); }
+
+	inline void addLight(Light* light) { renderer->addLight(light); }
+
+	inline void setDirty() { renderer->setDirty(); }
 
 	GLLoader* getLoader() { return loader; }
 	GLTextureLoader* getTextureLoader() { return textureLoader; }

@@ -3,10 +3,16 @@
 #include <iostream>
 using namespace std;
 
+/*                                      */
+/*                                      */
+/*                UNUSED                */
+/*                                      */
+/*                                      */
+
 void GLFBO::bindFrameBuffer()
 {
-	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
-	glViewport(0, 0, width, height);
+	glBindFramebuffer(GL_FRAMEBUFFER, m_frame_buffer);
+	glViewport(0, 0, m_width, m_height);
 }
 void GLFBO::unbind()
 {
@@ -16,8 +22,8 @@ void GLFBO::unbind()
 
 void GLFBO::initFrameBuffer()
 {
-	glGenFramebuffers(1, &frameBuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+	glGenFramebuffers(1, &m_frame_buffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, m_frame_buffer);
 	glDrawBuffer(GL_NONE);
 
 	/*
@@ -29,12 +35,12 @@ void GLFBO::initFrameBuffer()
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, texture, 0);
 	*/
 
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
+	glGenTextures(1, &m_texture);
+	glBindTexture(GL_TEXTURE_2D, m_texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, m_width, m_height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, texture, 0);
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, m_texture, 0);
 
 	//glGenRenderbuffers(1, &depthBuffer);
 	//glBindRenderbuffer(GL_RENDERBUFFER, depthBuffer);

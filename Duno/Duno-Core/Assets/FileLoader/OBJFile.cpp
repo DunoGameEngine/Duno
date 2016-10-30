@@ -25,8 +25,8 @@ struct Vertex
 	Vertex(unsigned int index, glm::vec3 position) :
 		index(index),
 		position(position),
-		textureIndex(-1),
-		normalIndex(-1),
+		textureIndex(0),
+		normalIndex(0),
 		dup(NULL),
 		tangent(glm::vec3()) {};
 	bool isSet() { return textureIndex != -1 && normalIndex != -1; }
@@ -51,7 +51,7 @@ inline Vertex* dealWithAlreadyProcessedVertex(Vertex* perVertex, int v, int t, i
 			return dealWithAlreadyProcessedVertex(anotherVertex, v, t, n, indecies, vertices);
 		else
 		{
-			Vertex* dupVertex = new Vertex(vertices.size(), perVertex->position);
+			Vertex* dupVertex = new Vertex((unsigned int)vertices.size(), perVertex->position);
 			dupVertex->textureIndex = t - 1;
 			dupVertex->normalIndex = n - 1;
 			perVertex->dup = dupVertex;
@@ -122,8 +122,8 @@ FileType::OBJFile FileType::OBJFile::load(File& file, bool useTangents)
 		}
 		else
 		{
-			if (!(type == "s" || type == "o" || type == "#"))
-				throw new WrongFileTypeExcption("OBJFile");
+			//if (!(type == "s" || type == "o" || type == "#"))
+				//throw new WrongFileTypeExcption("OBJFile");
 		}
 	}
 	while (getline(f, line))
@@ -145,6 +145,7 @@ FileType::OBJFile FileType::OBJFile::load(File& file, bool useTangents)
 			else
 				vert[i] = dealWithAlreadyProcessedVertex(currentVertex, v, t, n, indices, vertices);
 		}
+
 		glm::vec2 uv0 = textures[vert[0]->textureIndex];
 		glm::vec2 deltaUv1 = textures[vert[1]->textureIndex] - uv0;
 		glm::vec2 deltaUv2 = textures[vert[2]->textureIndex] - uv0;
@@ -175,7 +176,7 @@ FileType::OBJFile FileType::OBJFile::load(File& file, bool useTangents)
 		positionArray[(i * 3) + 1] = position.y;
 		positionArray[(i * 3) + 2] = position.z;
 		textureArray[i * 2] = texture.x;
-		textureArray[(i * 2) + 1] = texture.y;
+		textureArray[(i * 2) + 1] = -texture.y;
 		normalArray[i * 3] = normal.x;
 		normalArray[(i * 3) + 1] = normal.y;
 		normalArray[(i * 3) + 2] = normal.z;

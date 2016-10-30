@@ -98,10 +98,10 @@ void Duno::Graphics::Display::updateDisplay()
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
 	//swap images
-	glfwSwapBuffers(window);	
+	glfwSwapBuffers(window);
 
 	//get the input
-	glfwPollEvents();		
+	glfwPollEvents();
 
 }
 

@@ -73,6 +73,18 @@
     <Filter Include="Source Files\Graphics\RenderEngine\Types">
       <UniqueIdentifier>{8a063d15-e43d-44a6-a4fd-9d3cb5135042}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\RenderEngine\Lighting">
+      <UniqueIdentifier>{9f9416d2-b3d3-4b64-bcd9-f6e4dbae6524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine\Lighting">
+      <UniqueIdentifier>{abd2e0dd-91ee-4d21-bece-e91124678678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine\Types\Material">
+      <UniqueIdentifier>{ce82c47d-f0f3-472e-8e7f-95c2423b3f09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\RenderEngine\Types\Material">
+      <UniqueIdentifier>{e6a6ffb9-74cb-41a7-b5af-ee580707ff95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Duno_CS.h">
@@ -129,9 +141,6 @@
     <ClInclude Include="OpenGL\GL.h">
       <Filter>Header Files\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLMainRenderer.h">
       <Filter>Header Files\Graphics\RenderEngine</Filter>
     </ClInclude>
@@ -176,6 +185,21 @@
     </ClInclude>
     <ClInclude Include="Graphics\Display\DunoDisplayInfo.h">
       <Filter>Header Files\Graphics\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightManager.h">
+      <Filter>Header Files\Graphics\RenderEngine\Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\Lighting\DunoLightType.h">
+      <Filter>Header Files\Graphics\RenderEngine\Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="Todo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\Types\Material\GLMaterial.h">
+      <Filter>Header Files\Graphics\RenderEngine\Types\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderEngine\Types\Material\GLBasicMateralTypes.h">
+      <Filter>Header Files\Graphics\RenderEngine\Types\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -230,9 +254,6 @@
     <ClCompile Include="TESTING\MainTest.cpp">
       <Filter>Source Files\TESTING</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\renderEngine\Lighting\DunoLightManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLMainRenderer.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
@@ -277,6 +298,9 @@
     </ClCompile>
     <ClCompile Include="Graphics\Display\DunoDisplayInfo.cpp">
       <Filter>Source Files\Graphics\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderEngine\Lighting\DunoLightManager.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Lighting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

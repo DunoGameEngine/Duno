@@ -4,7 +4,7 @@
 class GLShaderCannotBeCreatedException : public DunoException
 {
 public:
-	GLShaderCannotBeCreatedException() : DunoException() {}
+	GLShaderCannotBeCreatedException() {}
 	virtual string errorOut()
 	{
 		return defaultMessage() + "\nShaderCannotBeCreatedException";
@@ -14,7 +14,7 @@ public:
 class GLShaderErrorException : public DunoException
 {
 public:
-	GLShaderErrorException(string msg) : DunoException(), msg(msg) {}
+	GLShaderErrorException(string msg) : msg(msg) {}
 	virtual string errorOut()
 	{
 		return defaultMessage() + "\nGLShaderErrorException\nError: " + msg;

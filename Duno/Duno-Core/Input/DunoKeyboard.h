@@ -127,7 +127,7 @@ using namespace std;
 #define DUNO_KEY_MENU               348
 #define DUNO_KEY_LAST               DUNO_KEY_MENU
 
-/* Handels key envents */
+/* Handles key events */
 class DunoKeyboard
 {
 public:
