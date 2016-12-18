@@ -87,9 +87,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Duno_CS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Assets\AssetManeger.h">
       <Filter>Header Files\Assets</Filter>
     </ClInclude>
@@ -143,9 +140,6 @@
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLMainRenderer.h">
       <Filter>Header Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="DunoGame.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\renderEngine\GLFBO.h">
       <Filter>Header Files\Graphics\RenderEngine</Filter>
@@ -201,11 +195,11 @@
     <ClInclude Include="Graphics\renderEngine\Types\Material\GLBasicMateralTypes.h">
       <Filter>Header Files\Graphics\RenderEngine\Types\Material</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Duno_CS.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Assets\AssetManeger.cpp">
       <Filter>Source Files\Assets</Filter>
     </ClCompile>
@@ -256,9 +250,6 @@
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLMainRenderer.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="DunoGame.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\renderEngine\GLFBO.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
